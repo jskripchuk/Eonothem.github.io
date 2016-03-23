@@ -1,7 +1,98 @@
 <!DOCTYPE html>
 <html>
+
+<head>
+    <title>AP Calculus</title>
+    <link href='https://fonts.googleapis.com/css?family=Francois+One' rel='stylesheet' type='text/css'>
+    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    <style>
+        :root {
+            --color1: #8e44ad;
+            --color2: #FF244A;
+            --color3: #FF631B;
+            --color4: #FFBF1E;
+            --color5: #ecf0f1;
+        }
+        body {
+            background-color: var(--color1);
+        }
+        h1 {
+            color: var(--color5);
+            font-family: 'Francois One', sans-serif;
+            font-size: 300%;
+        }
+        .head {
+            text-align: center;
+            text-shadow: 2px 2px 5px black;
+            background-color: var(--color2);
+            margin: auto;
+            width: 50%;
+            border-radius: 50px;
+            box-shadow: 7px 7px 30px black;
+        }
+
+        #getRandom {
+            text-align: center;
+            text-shadow: 2px 2px 5px black;
+            background-color: var(--color4);
+            margin-top: 10%;
+            margin-left: auto;
+            margin-right: auto;
+
+            width: 30%;
+            border-radius: 50px;
+            box-shadow: 7px 7px 30px black;
+        }
+
+        #login {
+            text-align: center;
+            text-shadow: 2px 2px 5px black;
+            background-color: var(--color3);
+            margin-top: 4%;
+            margin-left: auto;
+            margin-right: auto;
+            width: 10%;
+            border-radius: 50px;
+            box-shadow: 7px 7px 30px black;
+        }
+
+        #create {
+            text-align: center;
+            text-shadow: 2px 2px 5px black;
+            background-color: var(--color3);
+            margin: auto;
+            width: 30%;
+            border-radius: 50px;
+            box-shadow: 7px 7px 30px black;
+        }
+    </style>
+</head>
+
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+    <div class="head">
+        <h1>AP Calculus Problem Generator</h1>
+    </div>
+    <div id = "getRandom" class = "button">
+    	<h1>Get a Random Problem</h1>
+    </div>
+
+    <div id = "login" class = "button">
+    	<h1>Login</h1>
+    </div>
+
+    <div id = "create" class = "button">
+    	<h1>Create an Account</h1>
+    </div>
+</div>
+
+    <script>
+    	$(".button").hover(function(){
+    		$(this).animate({fontSize: '105%'});
+    	}, function(){
+    		$(this).animate({fontSize: '100%'});
+    	});
+    </script>
+
 </body>
+
 </html>
