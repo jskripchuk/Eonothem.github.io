@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Problem Generator</title>
+        <style>
+            .error {
+                color: white;
+                background-color: black;
+                font-family:"Courier New", Courier, monospace;
+                padding: 2px;
+                padding-left: 20px;
+            }
+            .gray {
+                color: LightGray;
+            }
+            .blink {
+                -webkit-animation: blink 1s linear infinite;
+                -moz-animation: blink 1s linear infinite;
+                -ms-animation: blink 1s linear infinite;
+                -o-animation: blink 1s linear infinite;
+                 animation: blink 1s linear infinite;
+            }
+            @-webkit-keyframes blink {
+                0% { opacity: 1; }
+                50% { opacity: 1; }
+                50.01% { opacity: 0; }
+                100% { opacity: 0; }
+            }
+            @-moz-keyframes blink {
+                0% { opacity: 1; }
+                50% { opacity: 1; }
+                50.01% { opacity: 0; }
+                100% { opacity: 0; }
+            }
+            @-ms-keyframes blink {
+                0% { opacity: 1; }
+                50% { opacity: 1; }
+                50.01% { opacity: 0; }
+                100% { opacity: 0; }
+            }
+            @-o-keyframes blink {
+                0% { opacity: 1; }
+                50% { opacity: 1; }
+                50.01% { opacity: 0; }
+                100% { opacity: 0; }
+            }
+            @keyframes blink {
+                0% { opacity: 1; }
+                50% { opacity: 1; }
+                50.01% { opacity: 0; }
+                100% { opacity: 0; }
+            }
+        </style>
+    </head>
+
+    <body>
+        <p><strong>Hiya so this is the calculus problem generator.</strong></p>
+        <p>Looks like you haven't added any parameters to the url or you messed something up <strong>AND WILL NEVER FINISH YOUR PROJECT! PANIC!</strong></p>
+        <p>Make a <em>GET</em> request like <a href="/?type=addition&amp;range=10">this</a> and it'll spit out a json!
+        <p><strong>If you're here because of an error, here it is:</strong></p>
+
+        <div class = "error">
+            <p>{{ exception }}</p>
+            <p>{{ exception2 }}</p>
+            <p class = "gray"><strong>$ just kidding you can't type here<span class="blink">&#9608;</span></strong></p>
+        </div>
+
+        <p><em>Currently supported features:</em></p>
+        <ul>
+            <li><a href="/?type=arithmetic&amp;range=10">arithmetic</a> - Take a <em>range</em> parameter. Defaults to 100</li>
+            <ul>
+                <li><a href="/?type=addition&amp;range=10">addition</a></li>
+                <li><a href="/?type=subtraction&amp;range=10">subtraction</a></li>
+                <li><a href="/?type=multiplication&amp;range=10">multiplication</a></li>
+                <li><a href="/?type=division&amp;range=10">division</a></li>         
+            </ul>
+            <li>calculus</li>
+            <ul>
+                <li>none yet lmao</li>
+            </ul>
+        </ul>
+    </body>
+</html>
