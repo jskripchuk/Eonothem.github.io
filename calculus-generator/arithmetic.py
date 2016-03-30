@@ -27,6 +27,10 @@ def arithmetic(pType, cap):
 
     a = random.randint(1, cap)
     b = random.randint(1, cap)
+
+    payload[0]["choices"] = [a + b, a - b, a * b, a / b]
+    random.shuffle(payload[0]["choices"])
+
     payload[0]["problem"] = "%s %s %s = " % (a, operator, b)
     payload[0]["solution"] = operators[operator](a, b)
     payload[0]["optional"] = False
