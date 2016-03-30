@@ -29,4 +29,5 @@ def arithmetic(pType, cap):
     b = random.randint(1, cap)
     payload[0]["problem"] = "%s %s %s = " % (a, operator, b)
     payload[0]["solution"] = operators[operator](a, b)
+    payload[0]["optional"] = False
     return payload
