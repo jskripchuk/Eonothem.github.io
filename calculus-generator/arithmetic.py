@@ -34,4 +34,6 @@ def arithmetic(pType, cap):
     payload[0]["problem"] = "%s %s %s = " % (a, operator, b)
     payload[0]["solution"] = operators[operator](a, b)
     payload[0]["optional"] = False
+
+    payload[0]["image"] = "http://eonothem.github.io/images/arithmetic.png"
     return payload
