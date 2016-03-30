@@ -5,6 +5,7 @@ import json
 import jinja2
 
 import arithmetic
+import sample_template
 
 JINJA_ENVIRONMENT = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
@@ -18,9 +19,13 @@ class MainHandler(webapp2.RequestHandler):
             pType = self.request.get("type").lower()
 
             #Check if it's arithmetic and do the arithmetic stuff.
-            if pType in arithmetic.arithmeticList:
+            if pType in arithmetic.appliesTo:
                 ranges = int(self.request.get("range", default_value="100"))
                 payload = arithmetic.arithmetic(pType, ranges)
+
+            #check if a word problem
+            if pType in sample_template.appliesTo:
+                payload = sample_template.wordProblem()
 
             self.response.write(json.dumps(payload, indent=4, sort_keys=True))
 
