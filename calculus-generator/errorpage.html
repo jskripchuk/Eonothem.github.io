@@ -3,6 +3,12 @@
     <head>
         <title>Problem Generator</title>
         <style>
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            .rainbow {
+                font-family: "Comic Sans MS", cursive, sans-serif;
+            }
             .error {
                 color: white;
                 background-color: black;
@@ -13,6 +19,17 @@
             .gray {
                 color: LightGray;
             }
+            ul {
+               list-style: none;
+               margin-left: 0;
+               padding-left: 1em;
+               text-indent: -1em;
+            }
+            .kewl a {
+                text-decoration: none;
+                color:#789922;
+            }
+
             .blink {
                 -webkit-animation: blink 1s linear infinite;
                 -moz-animation: blink 1s linear infinite;
@@ -54,6 +71,8 @@
     </head>
 
     <body>
+        <div class = rainbow><h1><span style="color:#ff0000;">C</span><span style="color:#ff2000;">A</span><span style="color:#ff4000;">L</span><span style="color:#ff5f00;">C</span><span style="color:#ff7f00;">U</span><span style="color:#ff9f00;">L</span><span style="color:#ffbf00;">U</span><span style="color:#ffdf00;">S</span><span style="color:#ffff00;"> </span><span style="color:#ccff00;">P</span><span style="color:#99ff00;">R</span><span style="color:#66ff00;">O</span><span style="color:#33ff00;">B</span><span style="color:#00ff00;">L</span><span style="color:#00ff40;">E</span><span style="color:#00ff80;">M</span><span style="color:#00ffbf;"> </span><span style="color:#00ffff;">G</span><span style="color:#00bfff;">E</span><span style="color:#0080ff;">N</span><span style="color:#0040ff;">E</span><span style="color:#0000ff;">R</span><span style="color:#2300ff;">A</span><span style="color:#4600ff;">T</span><span style="color:#6800ff;">O</span><span style="color:#8b00ff;">R</span></h1></div>
+
         <p><strong>Hiya so this is the calculus problem generator.</strong></p>
         <p>Looks like you haven't added any parameters to the url or you messed something up <strong>AND WILL NEVER FINISH YOUR PROJECT! PANIC!</strong></p>
         <p>Make a <em>GET</em> request like <a href="/?type=addition&amp;range=10">this</a> and it'll spit out a json!
@@ -65,19 +84,19 @@
             <p class = "gray"><strong>$ just kidding you can't type here<span class="blink">&#9608;</span></strong></p>
         </div>
 
-        <p><em>Currently supported features:</em></p>
-        <ul>
-            <li><a href="/?type=arithmetic&amp;range=10">arithmetic</a> - Take a <em>range</em> parameter. Defaults to 100</li>
+        <p><em>Currently supported features: (I can use comedy chevrons !!11!1!!)</em></p>
+        <ul class="kewl">
+            <li><a href="/?type=arithmetic&amp;range=10">>arithmetic</a> - Take a <em>range</em> parameter. Defaults to 100</li>
             <ul>
-                <li><a href="/?type=addition&amp;range=10">addition</a></li>
-                <li><a href="/?type=subtraction&amp;range=10">subtraction</a></li>
-                <li><a href="/?type=multiplication&amp;range=10">multiplication</a></li>
-                <li><a href="/?type=division&amp;range=10">division</a></li>         
+                <li><a href="/?type=addition&amp;range=10">>addition</a></li>
+                <li><a href="/?type=subtraction&amp;range=10">>subtraction</a></li>
+                <li><a href="/?type=multiplication&amp;range=10">>multiplication</a></li>
+                <li><a href="/?type=division&amp;range=10">>division</a></li>         
             </ul>
-            <li><a href="/?type=wordProblem">word problems<a></li>
-            <li>calculus</li>
+            <li><a href="/?type=wordProblem">>word problems<a></li>
+            <li>>calculus</li>
             <ul>
-                <li>none yet lmao</li>
+                <li>>none yet lmao</li>
             </ul>
         </ul>
     </body>
