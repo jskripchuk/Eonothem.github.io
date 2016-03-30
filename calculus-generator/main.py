@@ -2,7 +2,7 @@ import webapp2, jinja2
 import os, sys
 import json
 
-import graph
+#import graph
 
 import arithmetic, sample_template
 
@@ -36,12 +36,12 @@ class MainHandler(webapp2.RequestHandler):
             template = JINJA_ENVIRONMENT.get_template('errorpage.html')
             self.response.write(template.render(exception=exception, exception2=exception2))
 
-class Images(webapp2.RequestHandler):
-    def get(self):
-        f = self.request.get("f")
-        self.response.write("<img src='%s'/>" % graph.graph(f))
+#class Images(webapp2.RequestHandler):
+#    def get(self):
+#        f = self.request.get("f")
+#        self.response.write("<img src='%s'/>" % graph.graph(f))
         
 app = webapp2.WSGIApplication([
-    ('/', MainHandler),
-    ('/images', Images)
+    ('/', MainHandler)#,
+    #('/images', Images)
 ], debug=True)
