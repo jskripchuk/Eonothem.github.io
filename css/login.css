@@ -8,7 +8,8 @@
     filter: blur(2px);
 }
 
-h3 {
+h1 {
     text-color: white;
     text-align: center;
+    font-size: 85px;
 }
