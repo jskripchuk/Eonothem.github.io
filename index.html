@@ -2,98 +2,20 @@
 <html>
 
 <head>
+    <link rel="stylesheet" href="css/style.css">
     <link href='https://fonts.googleapis.com/css?family=Lato|Open+Sans:400,600,400italic,600italic,700italic,300italic,300' rel='stylesheet' type='text/css'>
-    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Open Sans', sans-serif;
-        }
-        
-        .list {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            background-color: #FFDD54;
-            font-weight: 600;
-            font-size: 140%;
-            color: #212121;
-        }
-        
-        .element {
-            display: block;
-            float: right;
-            padding: 15px 50px;
-            text-align: center;
-            transition: background-color 0.15s;
-        }
-        
-        .title {
-            display: block;
-            float: left;
-            text-align: center;
-            letter-spacing: 2.5px;
-            font-weight: 700;
-            padding: 8px 20px;
-            font-style: italic;
-            font-size: 140%;
-        }
-        
-        .element:hover {
-            background-color: #FFF1B8;
-        }
-        
-        h1 {
-            color: white;
-            font-weight: 300;
-            font-style: italic;
-            font-size: 1500%;
-        }
-        
-        h2 {
-            color: #D6D6D6;
-            font-weight: 300;
-            font-style: italic;
-            font-size: 180%;
-            margin-top: -200px;
-        }
-        
-        .content {
-            text-align: center;
-            background-color:  rgba(109,83,128,0.95);
-            padding-bottom: 20px;
-            box-shadow: 1px 6px 60px #1a1a1a;
-        }
-        
-        .background-image {
-            position: fixed;
-            left: 0;
-            right: 0;
-            z-index: -1;
-            display: block;
-            background-image: url('bg.png');
-            height: 100%;
-            background-size: 110%;
-            background-repeat: no-repeat;
-            -webkit-filter: blur(5px) grayscale(1);
-            -moz-filter: blur(5px);
-            -o-filter: blur(5px);
-            -ms-filter: blur(5px);
-            filter: blur(5px);
-        }
-    </style>
 </head>
 
 <body>
-    <div class="background-image"></div>
+    <div id="particles-js"></div>    
+    <script src='http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js'></script>
+    <script src="js/index.js"></script>
     <div class="header">
         <ul class="list">
             <li><span class="title">Small Stone</li>
-				<li id = "login"><span class = "element">Login</span></li>
-            <li id = "generate"><span class="element">Generate</span></li>
-            <li id = "about"><span class="element">About</span></li>
+                <li><span class = "element">Login</span></li>
+            <li><span class="element">Generate</span></li>
+            <li><span class="element">About</span></li>
         </ul>
     </div>
 
@@ -101,12 +23,6 @@
         <h1>Small Stone</h1>
         <h2>An AP Calculus AB Free Response Problem Generator</h2>
     </div>
-
-    <script>
-        $("#generate").click(function(){
-            window.location = "generate.html";
-        });
-    </script>
 </body>
 
 </html>
