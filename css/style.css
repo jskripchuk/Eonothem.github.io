@@ -96,13 +96,13 @@ h2 {
 
 .content {
   text-align: center;
-  background-color:     rgba(109,83,128,0.95);
+  background-color: rgba(109,83,128,0.95);
   padding-bottom: 20px;
   box-shadow: 1px 6px 60px #1a1a1a;
 }          
 
 .getStarted{
-  background-color:     rgba(130,99,152,0.95);
+  background-color: rgba(130,99,152,0.95);
   box-shadow: 1px 6px 60px #1a1a1a;
   text-align: center;
   letter-spacing: 5px;
