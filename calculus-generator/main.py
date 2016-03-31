@@ -15,6 +15,7 @@ class MainHandler(webapp2.RequestHandler):
     def get(self):
         try:
             self.response.headers['Content-Type'] = 'application/json'
+            self.response.headers.add_header("Access-Control-Allow-Origin", "*")
             pType = self.request.get("type").lower()
 
             #Check if it's arithmetic and do the arithmetic stuff.
