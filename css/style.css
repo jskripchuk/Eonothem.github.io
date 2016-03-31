@@ -91,8 +91,6 @@ h2 {
     background-color:  rgba(109,83,128,0.95);
     padding-bottom: 20px;
     box-shadow: 1px 6px 60px #1a1a1a;
-<<<<<<< HEAD
-=======
 }     
 
 .getStarted{
@@ -107,5 +105,4 @@ h2 {
 .getStarted:hover {
     letter-spacing: 25px;
     text-shadow: 2px 2px 30px #FFDD54;
->>>>>>> origin/master
 }
