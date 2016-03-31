@@ -25,76 +25,76 @@ canvas {
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .list {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #FFDD54;
-    font-weight: 600;
-    font-size: 140%;
-    color: #212121;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #FFDD54;
+  font-weight: 600;
+  font-size: 140%;
+  color: #212121;
 }
 
 .element {
-    display: block;
-    float: right;
-    padding: 15px 50px;
-    text-align: center;
-    transition: background-color 0.15s;
+  display: block;
+  float: right;
+  padding: 15px 50px;
+  text-align: center;
+  transition: background-color 0.15s;
 }
 
 .title {
-    display: block;
-    float: left;
-    text-align: center;
-    letter-spacing: 2.5px;
-    font-weight: 700;
-    padding: 8px 20px;
-    font-style: italic;
-    font-size: 140%;
+  display: block;
+  float: left;
+  text-align: center;
+  letter-spacing: 2.5px;
+  font-weight: 700;
+  padding: 8px 20px;
+  font-style: italic;
+  font-size: 140%;
 }
 
 .element:hover {
-    background-color: #FFF1B8;
+  background-color: #FFF1B8;
 }
 
 h1 {
-    color: white;
-    font-weight: 300;
-    font-style: italic;
-    font-size: 1500%;
+  color: white;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 1500%;
 }
 
 h3 {
-    color: white;
-    font-weight: 300;
-    font-style: italic;
-    font-size: 600%;
+  color: white;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 600%;
 }
 
 h2 {
-    color: #D6D6D6;
-    font-weight: 300;
-    font-style: italic;
-    font-size: 180%;
-    margin-top: -150px;
+  color: #D6D6D6;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 180%;
+  margin-top: -150px;
 }
 
 .content {
-    text-align: center;
-    background-color:  rgba(109,83,128,0.95);
-    padding-bottom: 20px;
-    box-shadow: 1px 6px 60px #1a1a1a;
-}     
+  text-align: center;
+  background-color:     rgba(109,83,128,0.95);
+  padding-bottom: 20px;
+  box-shadow: 1px 6px 60px #1a1a1a;
+}          
 
 .getStarted{
-  background-color:  rgba(130,99,152,0.95);
+  background-color:     rgba(130,99,152,0.95);
   box-shadow: 1px 6px 60px #1a1a1a;
   text-shadow: none;
   text-align: center;
@@ -103,8 +103,7 @@ h2 {
 }
 
 .getStarted:hover {
-    /*letter-spacing: 25px;*/
-    /*text-shadow: 2px 2px 30px #FFFFFF;*/
-    background-color: #9372AD;
-
+  /*letter-spacing: 25px;*/
+  /*text-shadow: 2px 2px 30px #FFFFFF;*/
+  background-color: #9372AD;
 }
