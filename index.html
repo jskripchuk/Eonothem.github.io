@@ -4,18 +4,22 @@
 <head>
     <link rel="stylesheet" href="css/style.css">
     <link href='https://fonts.googleapis.com/css?family=Lato|Open+Sans:400,600,400italic,600italic,700italic,300italic,300' rel='stylesheet' type='text/css'>
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 </head>
 
 <body>
+
     <div id="particles-js"></div>    
     <script src='http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js'></script>
     <script src="js/index.js"></script>
+
     <div class="header">
         <ul class="list">
             <li><span class="title">Small Stone</li>
-                <li><span class = "element">Login</span></li>
-            <li><span class="element">Generate</span></li>
-            <li><span class="element">About</span></li>
+
+            <li><span class = "element" id = "login">Login</span></li>
+            <li><span class="element" id = "generate">Generate</span></li>
+            <li><span class="element" id = "about">About</span></li>
         </ul>
     </div>
 
@@ -27,6 +31,13 @@
     <div class = "getStarted">
             <h3>Get Started</h3>
     </div>
+
+    <script>
+        $("#generate").click(function(){
+            window.location.href = "generate.html";
+        });
+    </script>
+
 </body>
 
 </html>

@@ -104,14 +104,12 @@ h2 {
 .getStarted{
   background-color:     rgba(130,99,152,0.95);
   box-shadow: 1px 6px 60px #1a1a1a;
-  text-shadow: none;
   text-align: center;
   letter-spacing: 5px;
-  transition: letter-spacing 0.5s, text-shadow 0.2s;
+  transition: letter-spacing 0.5s, background-color 0.5s;
 }
 
 .getStarted:hover {
-  /*letter-spacing: 25px;*/
-  /*text-shadow: 2px 2px 30px #FFFFFF;*/
+  letter-spacing: 10px;
   background-color: #9372AD;
 }
