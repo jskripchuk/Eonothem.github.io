@@ -3,6 +3,7 @@
 
 <head>
     <link href='https://fonts.googleapis.com/css?family=Lato|Open+Sans:400,600,400italic,600italic,700italic,300italic,300' rel='stylesheet' type='text/css'>
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <style>
         body {
             margin: 0;
@@ -90,9 +91,9 @@
     <div class="header">
         <ul class="list">
             <li><span class="title">Small Stone</li>
-				<li><span class = "element">Login</span></li>
-            <li><span class="element">Generate</span></li>
-            <li><span class="element">About</span></li>
+				<li id = "login"><span class = "element">Login</span></li>
+            <li id = "generate"><span class="element">Generate</span></li>
+            <li id = "about"><span class="element">About</span></li>
         </ul>
     </div>
 
@@ -100,6 +101,12 @@
         <h1>Small Stone</h1>
         <h2>An AP Calculus AB Free Response Problem Generator</h2>
     </div>
+
+    <script>
+        $("#generate").click(function(){
+            window.location = "generate.html";
+        });
+    </script>
 </body>
 
 </html>
