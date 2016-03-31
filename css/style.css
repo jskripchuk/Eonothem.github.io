@@ -103,6 +103,7 @@ h2 {
 }
 
 .getStarted:hover {
+    font-family: "Comic Sans MS";
     letter-spacing: 25px;
     text-shadow: 2px 2px 30px #FFDD54;
 }
