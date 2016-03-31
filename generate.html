@@ -5,6 +5,7 @@
 	</head>
 
 	<body>
+		<div id = "stuff">aaa</div>
 		<script>
 			$(document).ready(function(){
 				
@@ -12,9 +13,8 @@
 					type: "get",
 					url: "http://calculus-generator.appspot.com/?type=multiplication&range=10"
 				}).done(function(data){
-					console.log(data);
+					$("#stuff").text(data[0].problem+" "+data[0].solution);
 				});
-
 			});
 		</script>
 	</body>
