@@ -2,18 +2,58 @@
 <html>
 	<head>
 		<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+	
+		<style>
+
+			body {
+ 				margin: 0;
+  				padding: 0;
+  				font-family: 'Open Sans', sans-serif;
+  				color: white;
+			}
+
+			#questionContainer{
+				background-color: rgb(109,83,128);
+				width: 80vw;
+				height: 100vh;
+				float: left;
+			}
+
+			ol{
+				padding-top: 0;
+				margin: 0;
+			}
+		</style>
 	</head>
 
 	<body>
-		<div id = "stuff">aaa</div>
+		<div id = "questionContainer">
+			<ol>
+
+				<li>Jimbles is out shopping for froot with his buddies.</li>
+				<div id = "questions">
+				</div>
+			</ol>
+		</div>
+
+		<div id = "navbar">
+		</div>
+
 		<script>
 			$(document).ready(function(){
 				
 				$.ajax({
 					type: "get",
-					url: "http://calculus-generator.appspot.com/?type=multiplication&range=10"
+					url: "http://calculus-generator.appspot.com/?type=wordProblem"
 				}).done(function(data){
-					$("#stuff").text(data[0].problem+" "+data[0].solution);
+					//$("#stuff").text(data[0].problem+" "+data[0].solution);
+					//console.log(data);
+					var questionString = "<ol type='a'>"
+					for(var i = 0; i < data.length; i++){
+						questionString+="<li>"+data[i].problem+"</li>";
+					}
+					questionString+="</ol>";
+					$("#questions").html(questionString);
 				});
 			});
 		</script>
