@@ -2,7 +2,7 @@ import random
 
 appliesTo = ("wordproblem",)
 
-def wordProblem():
+def generate():
     payload = []
 
     variables = dict()

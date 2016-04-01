@@ -4,7 +4,7 @@ import json
 
 #import graph
 
-import arithmetic, sample_template
+import arithmetic, sample_template, differentiation
 
 JINJA_ENVIRONMENT = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
@@ -21,11 +21,15 @@ class MainHandler(webapp2.RequestHandler):
             #Check if it's arithmetic and do the arithmetic stuff.
             if pType in arithmetic.appliesTo:
                 ranges = int(self.request.get("range", default_value="100"))
-                payload = arithmetic.arithmetic(pType, ranges)
+                payload = arithmetic.generate(pType, ranges)
 
             #check if a word problem
             if pType in sample_template.appliesTo:
-                payload = sample_template.wordProblem()
+                payload = sample_template.generate()
+
+            if pType in differentiation.appliesTo:
+                degree = int(self.request.get("degree", default_value="5"))
+                payload = differentiation.generate(degree)
 
             self.response.write(json.dumps(payload, indent=4, sort_keys=True))
 

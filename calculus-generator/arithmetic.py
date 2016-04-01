@@ -20,7 +20,7 @@ operatorsWords = {
 payload = [{
 }]
 
-def arithmetic(pType, cap):    
+def generate(pType, cap):    
     if pType == "arithmetic":
         pType = random.choice(operatorsWords.keys())    
     operator = operatorsWords[pType]
