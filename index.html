@@ -14,11 +14,11 @@
     <script src="js/index.js"></script>
 
     <div class="header">
-        <ul class="list">
+        <ul class="list nav">
             <li><span class="title">Small Stone</li>
 
-            <li><span class = "element" id = "login">Login</span></li>
-            <li><span class="element" id = "generate">Generate</span></li>
+            <a href="/login"><li><span class = "element" id = "login">Login</span></li></a>
+            <a href="/generate"><li><span class="element" id = "generate">Generate</span></li></a>
             <li><span class="element" id = "about">About</span></li>
         </ul>
     </div>
@@ -28,15 +28,15 @@
         <h2>An AP Calculus AB Free Response Problem Generator</h2>
     </div>
 
-    <div class = "getStarted">
-            <h3>Get Started</h3>
+    <div class = "getStarted nav">
+        <a href="/generate"><h3>Get Started</h3></a>
     </div>
 
-    <script>
+    <!-- <script>
         $("#generate").click(function(){
             window.location.href = "generate.html";
         });
-    </script>
+    </script> -->
 
 </body>
 

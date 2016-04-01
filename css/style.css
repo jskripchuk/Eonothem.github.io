@@ -113,3 +113,8 @@ h2 {
   letter-spacing: 10px;
   background-color: #9372AD;
 }
+
+.nav a {
+  color: inherit;
+  text-decoration: none;
+}
