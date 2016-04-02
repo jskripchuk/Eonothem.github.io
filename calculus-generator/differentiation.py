@@ -1,9 +1,9 @@
-appliesTo = ("differentiation",)
-
 from sympy import diff, symbols
 from sympy.parsing.sympy_parser import parse_expr
 
 import random
+
+appliesTo = ("differentiation",)
 
 x, y = symbols('x y')
 
