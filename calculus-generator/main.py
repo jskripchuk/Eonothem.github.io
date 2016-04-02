@@ -24,10 +24,11 @@ class MainHandler(webapp2.RequestHandler):
                 payload = arithmetic.generate(pType, ranges)
 
             #check if a word problem
-            if pType in sample_template.appliesTo:
+            elif pType in sample_template.appliesTo:
                 payload = sample_template.generate()
 
-            if pType in differentiation.appliesTo:
+            #check if differentiation
+            elif pType in differentiation.appliesTo:
                 degree = int(self.request.get("degree", default_value="5"))
                 payload = differentiation.generate(degree)
 
