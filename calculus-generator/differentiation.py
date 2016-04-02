@@ -7,7 +7,7 @@ appliesTo = ("differentiation",)
 
 x, y = symbols('x y')
 
-skipChance = 10 #percent chance of skipping
+skipChance = 60 #percent chance of skipping
 maxCo = 10 #max coefficient
 negChance = 50 #percent chance of negative
 
@@ -18,12 +18,12 @@ def sign(): #generate random sign
         return "+"
 
 def coefficient(): #generate random coefficient
-    return random.randint(0, maxCo)
+    return random.randint(1, maxCo)
 
 def polyGen(degree): #build a polynomial
     poly = ""
     for i in range(degree, -1, -1):
-        if random.randint(0, 100) > skipChance:
+        if random.randint(0, 100) > skipChance or i == degree:
             poly += (sign() + str(coefficient()) + "*x**" + str(i))
     return parse_expr(poly)
 
