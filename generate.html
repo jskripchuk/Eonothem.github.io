@@ -1,61 +1,135 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-	
-		<style>
 
-			body {
- 				margin: 0;
-  				padding: 0;
-  				font-family: 'Open Sans', sans-serif;
-  				color: white;
-			}
+<head>
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="https://www.desmos.com/api/v0.3/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
+    <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 400;
+            color: black;
+        }
+        
+        #questionContainer {
+            background-color: rgb(109, 83, 128);
+            width: 100vw;
+            height: 100vh;
+            float: left;
+        }
+        
+        ol {
+            padding-top: 0;
+            margin: 0;
+        }
+        
+        #holder {
+            padding-top: 5px;
+            background-color: #FFDD54;
+            padding-bottom: 10px;
+        }
+        
+        #calculator {
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 1px 1px 10px #1a1a1a;
+            width: 400px;
+            height: 300px;
+        }
+        
+        #questions {
+            padding-top: 20px;
+        }
+    </style>
+</head>
 
-			#questionContainer{
-				background-color: rgb(109,83,128);
-				width: 80vw;
-				height: 100vh;
-				float: left;
-			}
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config(
+		{
+			extensions: ["[Contrib]/forminput/forminput.js"],
+			tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+		});
+</script>
+<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Ajax.config.path["Contrib"] = "//cdn.mathjax.org/mathjax/contrib";
+</script>
 
-			ol{
-				padding-top: 0;
-				margin: 0;
-			}
-		</style>
-	</head>
 
-	<body>
-		<div id = "questionContainer">
-			<ol>
 
-				<li>Jimbles is out shopping for froot with his buddies.</li>
-				<div id = "questions">
-				</div>
-			</ol>
-		</div>
+<body>
+    <div id="questionContainer">
 
-		<div id = "navbar">
-		</div>
+        <div id="holder">
+            <div id="calculator"></div>
+            <div id="questions">
+                <ol>
+                    <li id="introQuestion">Left $f(x)$ be defined as </li>
+                    <ol type="a">
+                        <li>Calculate $f(x)'$</li>
+                        <input type="text" value="$\FormInput$">
+                    </ol>
+                </ol>
+            </div>
+        </div>
+    </div>
 
-		<script>
-			$(document).ready(function(){
-				
-				$.ajax({
-					type: "get",
-					url: "http://calculus-generator.appspot.com/?type=wordProblem"
-				}).done(function(data){
-					//$("#stuff").text(data[0].problem+" "+data[0].solution);
-					//console.log(data);
-					var questionString = "<ol type='a'>"
-					for(var i = 0; i < data.length; i++){
-						questionString+="<li>"+data[i].problem+"</li>";
-					}
-					questionString+="</ol>";
-					$("#questions").html(questionString);
-				});
-			});
-		</script>
-	</body>
+    <div id="navbar">
+    </div>
+
+    <script>
+        var elt = document.getElementById('calculator');
+        var calculator = Desmos.Calculator(elt, {
+            expressions: false,
+            lockViewport: true,
+            solutions: false
+        });
+        calculator.setViewport([-5, 5, -5, 5]);
+        //calculator.setExpression({id:'graph1', latex:'y=x^2'});
+        //calculator.setExpression({id:'graph2', latex:'y=x'});
+
+
+        //$(document).ready(function(){
+
+        //$.ajax({
+        //type: "get",
+        //url: "http://calculus-generator.appspot.com/?type=wordProblem"
+        //}).done(function(data){
+        //$("#stuff").text(data[0].problem+" "+data[0].solution);
+        //console.log(data);
+        //var questionString = "<ol type='a'>"
+        //for(var i = 0; i < data.length; i++){
+        //questionString+="<li>"+data[i].problem+"</li>";
+        //}
+        //questionString+="</ol>";
+        //$("#questions").html(questionString);
+        //});
+        //});
+
+        $(document).ready(function() {
+
+            $.ajax({
+                type: "get",
+                url: "http://calculus-generator.appspot.com/?type=differentiation&degree=3"
+            }).done(function(data) {
+                calculator.setExpression({
+                    id: 'graph1',
+                    latex: data.problem,
+                    color: 'red'
+                });
+                calculator.setExpression({
+                    id: 'derv',
+                    latex: data.solution,
+                    color: 'blue'
+                });
+                $("#introQuestion").html("The function $f(x) =" + data.problem + "$ and it's derivitive $f(x)'$ are shown above.");
+            });
+        });
+    </script>
+</body>
+
 </html>
