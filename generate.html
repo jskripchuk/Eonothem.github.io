@@ -47,16 +47,14 @@
 </head>
 
 <script type="text/x-mathjax-config">
-    MathJax.Hub.Config(
-		{
-			extensions: ["[Contrib]/forminput/forminput.js"],
-			tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
-		});
+    MathJax.Hub.Config( { extensions: ["[Contrib]/forminput/forminput.js"], tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]} });
+
+
 </script>
 <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
 </script>
 <script type="text/x-mathjax-config">
-  MathJax.Ajax.config.path["Contrib"] = "//cdn.mathjax.org/mathjax/contrib";
+    MathJax.Ajax.config.path["Contrib"] = "//cdn.mathjax.org/mathjax/contrib";
 </script>
 
 
@@ -68,54 +66,88 @@
             <div id="calculator"></div>
             <div id="questions">
                 <ol>
-                    <li id="introQuestion">Left $f(x)$ be defined as </li>
+                    <li id="introQuestion"></li>
                     <ol type="a">
                         <li>Calculate $f(x)'$</li>
-                        <input type="text" value="$\FormInput$">
+                        <input type="text" placeholder='Type your answer here!' id="inputText"></input>
+                        <div id="eqOutput">
+                            <p id="equationOutput"></p>
+                        </div>
                     </ol>
                 </ol>
             </div>
-        </div>
+			<input type = "button" value = "CLICK HERE WHEN U DONE" id = "doneButton"></input>
+			<h1 id = "resultText"></h1>
+			<p id = "solution"></p>
+		</div>
     </div>
 
     <div id="navbar">
     </div>
 
     <script>
+		var problemObject = 0;
+	
         var elt = document.getElementById('calculator');
         var calculator = Desmos.Calculator(elt, {
             expressions: false,
             lockViewport: true,
             solutions: false
         });
+		
         calculator.setViewport([-5, 5, -5, 5]);
-        //calculator.setExpression({id:'graph1', latex:'y=x^2'});
-        //calculator.setExpression({id:'graph2', latex:'y=x'});
 
-
-        //$(document).ready(function(){
-
-        //$.ajax({
-        //type: "get",
-        //url: "http://calculus-generator.appspot.com/?type=wordProblem"
-        //}).done(function(data){
-        //$("#stuff").text(data[0].problem+" "+data[0].solution);
-        //console.log(data);
-        //var questionString = "<ol type='a'>"
-        //for(var i = 0; i < data.length; i++){
-        //questionString+="<li>"+data[i].problem+"</li>";
-        //}
-        //questionString+="</ol>";
-        //$("#questions").html(questionString);
-        //});
-        //});
+		//Reads the input text and reloads the math
+        $("#inputText").on('input', function() {			
+            var strInput = $("#inputText").val();
+			
+			//Remove all dollar signs because that's bad
+			var eqText = strInput.replace(/\$/g, "");
+			
+            if (eqText != "") {
+                $("#equationOutput").text("$" + eqText + "$");
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub, "equationOutput"]);
+            } else {
+                $("#equationOutput").text("");
+            }
+			rotateit = true;
+        });
+		
+		var rotateit = false;
+		var x = 100;
+		function loop(){
+			x++;
+			if(rotateit){$("#resultText").css({
+				transform: 'rotate(' + x + 'deg)'
+			});
+			}
+		}
+		
+		setInterval(loop,10);
+		
+		$("#doneButton").click(function(){
+			console.log(problemObject);
+			var answerOne = $("#inputText").val();
+			var solution = problemObject.solution;
+			//Remove those annoying spaces
+			answerOne = answerOne.replace(/ /g,"");
+			solution = solution.replace(/ /g,"");
+			if(answerOne == solution){
+				$("#resultText").text("YOU DID IT IM SO PROUD OF YOU!");
+			}else{
+				$("#resultText").text("Darngnabit. But u can do better I kno u can!11!!");
+			}
+			$("#solution").text("The correct answer is $" +solution+ "$");
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub, "solution"]);
+		});
 
         $(document).ready(function() {
 
             $.ajax({
                 type: "get",
-                url: "http://calculus-generator.appspot.com/?type=differentiation&degree=3"
+                url: "http://calculus-generator.appspot.com/?type=differentiation&degree=2"
             }).done(function(data) {
+				problemObject = data;
                 calculator.setExpression({
                     id: 'graph1',
                     latex: data.problem,
@@ -129,6 +161,9 @@
                 $("#introQuestion").html("The function $f(x) =" + data.problem + "$ and it's derivitive $f(x)'$ are shown above.");
             });
         });
+
+
+        //setInterval(loop, 100);
     </script>
 </body>
 
