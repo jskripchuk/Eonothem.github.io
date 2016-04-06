@@ -10,8 +10,10 @@
             margin: 0;
             padding: 0;
             font-family: 'Open Sans', sans-serif;
-            font-weight: 400;
+            
             color: black;
+			background-color: #B5B5B5;
+			font-weight: 600;
         }
         
         #questionContainer {
@@ -22,9 +24,11 @@
         }
         
         ol {
-            padding-top: 0;
-            margin: 0;
         }
+		
+		li{
+			padding-top: 0px;
+		}
         
         #holder {
             padding-top: 5px;
@@ -43,11 +47,64 @@
         #questions {
             padding-top: 20px;
         }
+		
+		.questionHolder{
+			width: 95%;
+			padding-top: 20px;
+			background-color: rgb(109,83,128);
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: 10px;
+			height: 800px;
+			border-radius: 5px;
+			box-shadow: 1px 1px 10px #1a1a1a;
+		}
+		
+		.questionBackground{
+			background-color: #FFDD54;
+			margin-top: 20px;
+			margin-left: auto;
+			margin-right: auto;
+			width: 95%;
+			height: 20vh;
+			border-radius: 5px;
+			box-shadow: 1px 1px 10px #1a1a1a;
+		}
+		
+		#question{
+			padding-top: 10px;
+		}
+		
+		.input{
+			padding: 10px;
+			display: inline-block;
+		}
+		
+		.inputText{
+			height: 20px;
+			width: 300px;
+			border: solid 1px;
+			padding-left: 5px;
+		}
+		
+		.solution{
+			display: inline-block;
+			
+		}
+		
+		#equationOutput{
+			padding-left: 10px;
+		}
+		
     </style>
 </head>
 
 <script type="text/x-mathjax-config">
-    MathJax.Hub.Config( { extensions: ["[Contrib]/forminput/forminput.js"], tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]} });
+    MathJax.Hub.Config( { 
+		extensions: ["[Contrib]/forminput/forminput.js"], 
+		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+		messageStyle: "none"		
+	});
 
 
 </script>
@@ -60,7 +117,26 @@
 
 
 <body>
-    <div id="questionContainer">
+	<div class = "questionHolder">
+		<div id = "calculator"></div>
+		
+		<div class = "questionBackground">
+			<ol id = "question">
+				<li id = "introQuestion"></li>
+				
+				<ol type="a">
+					<li>Calculate f(x)'</li>
+						<div class = "input">
+							<input type="text" placeholder='Type your answer here!' class = "inputText solution" id = "inputText"></input>
+							<div class = "solution" id = "equationOutput"></div>
+						</div>
+					<li>Dood ay</li>
+				</ol>
+				
+			</ol>
+		</div>
+	</div>
+    <!--<div id="questionContainer">
 
         <div id="holder">
             <div id="calculator"></div>
@@ -73,13 +149,15 @@
                         <div id="eqOutput">
                             <p id="equationOutput"></p>
                         </div>
+						<li>This is the second subquestion</li>
+						<li>This is the third subquestion</li>
                     </ol>
                 </ol>
             </div>
 			<input type = "button" value = "CLICK HERE WHEN U DONE" id = "doneButton"></input>
 			<h1 id = "resultText"></h1>
 			<p id = "solution"></p>
-		</div>
+		</div>-->
     </div>
 
     <div id="navbar">
@@ -88,6 +166,27 @@
     <script>
 		var problemObject = 0;
 	
+		$(document).ready(function() {
+
+            $.ajax({
+                type: "get",
+                url: "http://calculus-generator.appspot.com/?type=differentiation&degree=2"
+            }).done(function(data) {
+				problemObject = data;
+                calculator.setExpression({
+                    id: 'graph1',
+                    latex: data.problem,
+                    color: 'red'
+                });
+                calculator.setExpression({
+                    id: 'derv',
+                    latex: data.solution,
+                    color: 'blue'
+                });
+                $("#introQuestion").html("The function $f(x) =" + data.problem + "$ and its derivitive $f(x)'$ are shown above.");
+            });
+        });
+		
         var elt = document.getElementById('calculator');
         var calculator = Desmos.Calculator(elt, {
             expressions: false,
@@ -112,19 +211,7 @@
             }
 			rotateit = true;
         });
-		
-		var rotateit = false;
-		var x = 100;
-		function loop(){
-			x++;
-			if(rotateit){$("#resultText").css({
-				transform: 'rotate(' + x + 'deg)'
-			});
-			}
-		}
-		
-		setInterval(loop,10);
-		
+				
 		$("#doneButton").click(function(){
 			console.log(problemObject);
 			var answerOne = $("#inputText").val();
@@ -140,30 +227,6 @@
 			$("#solution").text("The correct answer is $" +solution+ "$");
             MathJax.Hub.Queue(["Typeset", MathJax.Hub, "solution"]);
 		});
-
-        $(document).ready(function() {
-
-            $.ajax({
-                type: "get",
-                url: "http://calculus-generator.appspot.com/?type=differentiation&degree=2"
-            }).done(function(data) {
-				problemObject = data;
-                calculator.setExpression({
-                    id: 'graph1',
-                    latex: data.problem,
-                    color: 'red'
-                });
-                calculator.setExpression({
-                    id: 'derv',
-                    latex: data.solution,
-                    color: 'blue'
-                });
-                $("#introQuestion").html("The function $f(x) =" + data.problem + "$ and it's derivitive $f(x)'$ are shown above.");
-            });
-        });
-
-
-        //setInterval(loop, 100);
     </script>
 </body>
 
