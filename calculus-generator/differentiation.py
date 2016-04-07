@@ -36,7 +36,7 @@ def latex(func):
 def generate(degree):
     problem = polyGen(degree)
     return {
-        "optional": False, 
+        "optional": False,
         "problem": latex(problem),
         "solution": latex(diff(problem, x))
     }
