@@ -78,6 +78,12 @@
 		.input{
 			padding: 10px;
 			display: inline-block;
+			/*Green:#70E08C
+				Red: #DE4040
+			*/
+			background-color: #FFE478;
+			border-radius: 4px;
+			width: 95%;
 		}
 		
 		.inputText{
@@ -89,11 +95,33 @@
 		
 		.solution{
 			display: inline-block;
-			
 		}
 		
 		#equationOutput{
 			padding-left: 10px;
+		}
+		
+		#submitButton{
+			margin-right:auto;
+			margin-left:auto;
+			width: 400px;
+			text-align: center;
+			background-color: #FFDD54;
+			box-shadow: 1px 1px 10px #1a1a1a;
+			border-radius: 10px;
+			font-size: 120%;
+			transition: box-shadow 0.4s, letter-spacing 0.4s, background-color 0.4s, transform 0.4s;
+		}
+		
+		#submitButton:hover{
+			box-shadow: 5px 5px 10px #1a1a1a;
+			background-color: #FFE478;
+			transform: scale(1.05,1.05);
+		}
+		
+		#correctAnswer{
+			float: right;
+			padding-top: 2px;
 		}
 		
     </style>
@@ -129,36 +157,18 @@
 						<div class = "input">
 							<input type="text" placeholder='Type your answer here!' class = "inputText solution" id = "inputText"></input>
 							<div class = "solution" id = "equationOutput"></div>
+							<div class = "solution" id = "correctAnswer"></div>
 						</div>
-					<li>Dood ay</li>
 				</ol>
 				
 			</ol>
 		</div>
+		
+		<div id = "submitButton">
+			<h1>Submit</h1>
+		</div>
 	</div>
-    <!--<div id="questionContainer">
-
-        <div id="holder">
-            <div id="calculator"></div>
-            <div id="questions">
-                <ol>
-                    <li id="introQuestion"></li>
-                    <ol type="a">
-                        <li>Calculate $f(x)'$</li>
-                        <input type="text" placeholder='Type your answer here!' id="inputText"></input>
-                        <div id="eqOutput">
-                            <p id="equationOutput"></p>
-                        </div>
-						<li>This is the second subquestion</li>
-						<li>This is the third subquestion</li>
-                    </ol>
-                </ol>
-            </div>
-			<input type = "button" value = "CLICK HERE WHEN U DONE" id = "doneButton"></input>
-			<h1 id = "resultText"></h1>
-			<p id = "solution"></p>
-		</div>-->
-    </div>
+    
 
     <div id="navbar">
     </div>
@@ -212,20 +222,24 @@
 			rotateit = true;
         });
 				
-		$("#doneButton").click(function(){
-			console.log(problemObject);
+		$("#submitButton").click(function(){
+			//console.log(problemObject);
+			$("#inputText").prop('disabled', true);
+
 			var answerOne = $("#inputText").val();
 			var solution = problemObject.solution;
 			//Remove those annoying spaces
 			answerOne = answerOne.replace(/ /g,"");
 			solution = solution.replace(/ /g,"");
+		
 			if(answerOne == solution){
-				$("#resultText").text("YOU DID IT IM SO PROUD OF YOU!");
+				$(".input").css("background-color","#70E08C");
+				$("#correctAnswer").text("Correct!");
 			}else{
-				$("#resultText").text("Darngnabit. But u can do better I kno u can!11!!");
+				$(".input").css("background-color","#DE4040");
+				$("#correctAnswer").text("The answer is $" +solution+"$");
 			}
-			$("#solution").text("The correct answer is $" +solution+ "$");
-            MathJax.Hub.Queue(["Typeset", MathJax.Hub, "solution"]);
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub, "resultText"]);
 		});
     </script>
 </body>
