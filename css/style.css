@@ -114,6 +114,10 @@ h2 {
   background-color: #9372AD;
 }
 
+.selected {
+  color: gray;
+}
+
 .nav a {
   color: inherit;
   text-decoration: none;
