@@ -1,13 +1,131 @@
 <!DOCTYPE html>
-<html >
-  <head>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/login.css">
-    <link href='https://fonts.googleapis.com/css?family=Lato|Open+Sans:400,600,400italic,600italic,700italic,300italic,300' rel='stylesheet' type='text/css'>
-  </head>
+<html>
 
-  <body>
-    <div id="particles-js"></div>  
+<head>
+    <link rel="stylesheet" href="css/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Lato|Open+Sans:400,600,400italic,600italic,700italic,300italic,300' rel='stylesheet' type='text/css'>
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+
+    <style>
+        #loginBox {
+            background-color: rgba(109, 83, 128, 1);
+            width: 800px;
+            height: 300px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 20px;
+            margin-top: -100px;
+            box-shadow: 1px 6px 60px #1a1a1a;
+        }
+        
+        h1 {
+            text-align: center;
+            text-shadow: 1px 1px 5px black;
+        }
+        
+        .logItem {
+            display: inline-block;
+            width: 49%;
+            text-align: center;
+            height: 100%;
+        }
+        
+        h4 {}
+        
+        #loginEnter {
+            transform: translate(0px, -41px);
+            border: none;
+            border-right: solid;
+            border-color: rgba(214, 214, 214, 0.4);
+            border-width: 2px;
+        }
+        
+        h3 {
+            color: black;
+            font-size: 300%;
+        }
+        
+        #signup {}
+        
+        input {
+            border: none;
+            background-color: transparent;
+            border-bottom: solid;
+            color: white;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 200%;
+            width: 80%;
+            border-width: 1px;
+        }
+        
+        p {
+            color: white;
+            font-size: 200%;
+            padding: 0;
+        }
+        
+        #loginText {}
+        
+        .submitButton {
+            margin-right: auto;
+            margin-left: auto;
+            width: 300px;
+            text-align: center;
+            background-color: #FFDD54;
+            box-shadow: 1px 1px 10px #1a1a1a;
+            border-radius: 10px;
+            font-size: 120%;
+            transition: box-shadow 0.4s, letter-spacing 0.4s, background-color 0.4s, transform 0.4s;
+        }
+        
+        .submitButton:hover {
+            box-shadow: 5px 5px 10px #1a1a1a;
+            background-color: #FFE478;
+            transform: scale(1.05, 1.05);
+        }
+        
+        #submitSignup {
+            transform: translate(0px, -20px);
+            transition: box-shadow 0.4s, letter-spacing 0.4s, background-color 0.4s, transform 0.4s;
+        }
+        
+        #submitLogin {
+            transform: translate(0px, 21px);
+            transition: box-shadow 0.4s, letter-spacing 0.4s, background-color 0.4s, transform 0.4s;
+        }
+        
+        .logHead {
+            font-size: 200%;
+            letter-spacing: 2px;
+            text-shadow: 1px 1px 5px black;
+        }
+        
+        ::-webkit-input-placeholder {
+            /* Chrome/Opera/Safari */
+            color: white;
+            opacity: 0.2;
+        }
+        
+        ::-moz-placeholder {
+            /* Firefox 19+ */
+            color: white;
+        }
+        
+        :-ms-input-placeholder {
+            /* IE 10+ */
+            color: white;
+        }
+        
+        :-moz-placeholder {
+            /* Firefox 18- */
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="particles-js"></div>
     <script src='http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js'></script>
     <script src="js/index.js"></script>
 
@@ -15,12 +133,66 @@
         <ul class="list nav">
             <li><a href="/"><span class="title">Small Stone</a></li>
 
-            <a href="/login"><li><span class = "element selected" id = "login">Login</span></li></a>
-            <a href="/generate"><li><span class="element" id = "generate">Generate</span></li></a>
-            <a href="/about"><li><span class="element" id = "about">About</span></li></a>
+            <a href="/login">
+                <li><span class="element selected" id="login">Login</span></li>
+            </a>
+            <a href="/generate">
+                <li><span class="element" id="generate">Generate</span></li>
+            </a>
+            <a href="/about">
+                <li><span class="element" id="about">About</span></li>
+            </a>
+
+
         </ul>
     </div>
-    <h1>Log In</h1>
+    <h1>Welcome</h1>
+    <div id="loginBox">
+        <div id="loginEnter" class="logItem">
+            <p id="loginText" class="logHead"><em>Login</em></p>
+            <input type="text" placeholder="Username"><br>
+            <input type="password" placeholder="Password">
+            <div id="submitLogin" class="submitButton">
+                <h3>Submit</h3></div>
+        </div>
+        <div id="signup" class="logItem">
+            <p class="logHead"><em>Signup</em></p>
+            <input type="text" value="" placeholder="Username" id="signupUsername"><br>
+            <input type="password" value="" placeholder="Password" id="signupPassword"><br>
+            <input type="password" value="" placeholder="Retype Password" id="signupRetypedPassword"><br>
+            <div id="submitSignup" class="submitButton">
+                <h3>Submit</h3></div>
+        </div>
     </div>
-  </body>
+    </div>
+
+    <script>
+        $("#submitSignup").click(function() {
+            var username = $("#signupUsername").val();
+            var password = $("#signupPassword").val();
+            var rePassword = $("#signupRetypedPassword").val();
+            console.log(username == "");
+
+            if (password == rePassword) {
+                if (username == "" || password == "" || rePassword == "") {
+                    console.log("ALL FORMS MUST BE FILLED");
+                } else {
+                    $.ajax({
+                        type: "post",
+                        url: "loginScript.php",
+						data:{
+							username: username,
+							password: password
+						}
+                    }).done(function(data) {
+
+                    });
+                }
+            } else {
+                console.log("Passwords do not match!");
+            }
+        });
+    </script>
+</body>
+
 </html>
