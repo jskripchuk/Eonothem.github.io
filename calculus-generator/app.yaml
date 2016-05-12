@@ -14,7 +14,9 @@ handlers:
 
 libraries:
 - name: webapp2
-  version: "2.5.2"
+  version: latest
+- name: webob
+  version: latest
 - name: jinja2
   version: latest
 - name: matplotlib
