@@ -33,7 +33,7 @@ def generate():
 
     output = dict()
     output["question"] = "At the time t = %s, the position of %s is equal to %s. Find the equation for postion." % (positionTime,item,N(position.subs(t,positionTime),precision))
-    output["solution"] = str(position)
+    output["solution"] = str(latex(position))
     payload.append(output)
 
     averageVelocityStart = random.randint(0,10)
