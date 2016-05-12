@@ -4,7 +4,7 @@ import json
 
 #import graph
 
-import arithmetic, sample_template, differentiation
+import arithmetic, sample_template, differentiation, physics
 
 JINJA_ENVIRONMENT = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
@@ -31,6 +31,9 @@ class MainHandler(webapp2.RequestHandler):
             elif pType in differentiation.appliesTo:
                 degree = int(self.request.get("degree", default_value="5"))
                 payload = differentiation.generate(degree)
+
+            elif pType in physics.appliesTo:
+                payload = physics.generate()
 
             self.response.write(json.dumps(payload, indent=4, sort_keys=True))
 

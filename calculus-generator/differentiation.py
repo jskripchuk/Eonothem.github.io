@@ -40,3 +40,7 @@ def generate(degree):
         "problem": latex(problem),
         "solution": latex(diff(problem, x))
     }
+
+if __name__ == "__main__":
+    import pprint
+    pprint.pprint(generate(3))

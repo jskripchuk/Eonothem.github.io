@@ -1,3 +1,5 @@
+appliesTo = ("physics",)
+
 from sympy import *
 import differentiation
 
@@ -18,11 +20,11 @@ def generate():
     accelerationTime = random.randint(0,100)
 
     payload = []
-    item = random.choice(["DAT BOI", "Mr. Satalino's mustache", "Mr. Stover's beard", "my sneeze", "THE DECAY OF SOCIETY", "THE DOWNFALL OF THE BOURGEOISIE"])
+    item = random.choice(["Mr. Satalino's mustache", "Mr. Stover's beard", "Mr. Stella's bald spot", "Mr. Kramer's anime addiction", "the downfall of the bourgeoisie"])
     output = dict()
     output["header"] = "The velocity of %s over time is given by the function %s" % (item, latex(str(velocity)))
-    output["question"] = "Calculate the instantanious acceleration of the meme at time t = "+str(accelerationTime)
-    output["solution"] = N(diff(velocity,t).subs(t,accelerationTime), precision)
+    output["question"] = "Calculate the instantanious acceleration of %s at time t = %s" % (item, accelerationTime)
+    output["solution"] = float(N(diff(velocity,t).subs(t,accelerationTime), precision))
     payload.append(output)
 
     positionTime = random.randint(0,10)
@@ -31,15 +33,15 @@ def generate():
 
     output = dict()
     output["question"] = "At the time t = %s, the position of %s is equal to %s. Find the equation for postion." % (positionTime,item,N(position.subs(t,positionTime),precision))
-    output["solution"] = position
+    output["solution"] = str(position)
     payload.append(output)
 
     averageVelocityStart = random.randint(0,10)
     averageVelocityEnd = averageVelocityStart+random.randint(4,20)
 
     output = dict()
-    output["question"] = "Find the average velocity of %s from %s<t<%s" % (item, averageVelocityStart, averageVelocityEnd)
-    output["solution"] = N( (1.0/(averageVelocityEnd-averageVelocityStart))*integrate(velocity,(t,averageVelocityStart,averageVelocityEnd)), precision ) 
+    output["question"] = "Find the average velocity of %s from %s &le; t &le; %s" % (item, averageVelocityStart, averageVelocityEnd)
+    output["solution"] = float(N( (1.0/(averageVelocityEnd-averageVelocityStart))*integrate(velocity,(t,averageVelocityStart,averageVelocityEnd)), precision ))
 
     payload.append(output)
 
@@ -52,5 +54,7 @@ def latex(func):
     func = func.replace("*", "")
     return func
 
-import pprint
-pprint.pprint(generate())
+if __name__ == "__main__":
+    import pprint
+    problem = generate()
+    pprint.pprint(problem)
