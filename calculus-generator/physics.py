@@ -18,7 +18,7 @@ def generate():
     accelerationTime = random.randint(0,100)
 
     payload = []
-    item = "dat boi (o shit waddup)"
+    item = random.choice(["DAT BOI", "Mr. Satalino's mustache", "Mr. Stover's beard", "my sneeze", "THE DECAY OF SOCIETY", "THE DOWNFALL OF THE BOURGEOISIE"])
     output = dict()
     output["header"] = "The velocity of %s over time is given by the function %s" % (item, latex(str(velocity)))
     output["question"] = "Calculate the instantanious acceleration of the meme at time t = "+str(accelerationTime)
