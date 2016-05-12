@@ -1,12 +1,13 @@
+appliesTo = ("volume",)
 from sympy import *
 import differentiation
 
 import random
-x = symbols('x')
 
 #Simple program for finding area/volume/etc bounded between two curves in the first quadrant
 #I'm only using the first quadrant & simple polynomials because this gets complicated real fast if you don't: and that takes effort
-def generateBoundingFunctions(lower, upper):
+def generate(lower, upper):
+    x = symbols('x')
     precision = 5
     c = random.randint(1,10)
     b = random.randint(1,10)
@@ -38,28 +39,25 @@ def generateBoundingFunctions(lower, upper):
     output = dict()
     output["header"] = "The functions "+latex(functionOne)+" and "+latex(functionTwo)+" are defined in the first quadrant."
     output["question"] = "Find the area between the two functions."
-    output["solution"] = area
+    output["solution"] = float(area)
     payload.append(output)
 
     output = dict()
     output["question"] = "Find the volume of the solid of revolution of the two functions when rotated about the x-axis."
-    output["solution"] = volumeX
+    output["solution"] = float(volumeX)
     payload.append(output)
 
     output = dict()
     output["question"] = "Find the volume of the solid of revolution between the two functions when it is rotated about the line x = "+str(verticalAxis)
-    output["solution"] = volumeShell
+    output["solution"] = float(volumeShell)
     payload.append(output)
 
     output = dict()
     output["question"] = "Find the volume between the two functions when the cross-section perpendicular to the x-axis is a square."
-    output["solution"] = volumeSquareBase
+    output["solution"] = float(volumeSquareBase)
     payload.append(output)
 
-
     return payload
-  
-    
 
 def latex(func):
     func = str(func)
@@ -67,5 +65,6 @@ def latex(func):
     func = func.replace("*", "")
     return func
 
-import pprint
-pprint.pprint(generateBoundingFunctions(1,3))
+if __name__ == "__main__":
+    import pprint
+    pprint.pprint(generate(1,3))

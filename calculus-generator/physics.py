@@ -20,7 +20,7 @@ def generate():
     accelerationTime = random.randint(0,100)
 
     payload = []
-    item = random.choice(["Mr. Satalino's mustache", "Mr. Stover's beard", "Mr. Stella's bald spot", "Mr. Kramer's anime addiction", "the downfall of the bourgeoisie"])
+    item = random.choice(["Mr. Satalino's mustache", "Mr. Stover's beard", "Mr. Kramer's anime addiction", "the downfall of the bourgeoisie"])
     output = dict()
     output["header"] = "The velocity of %s over time is given by the function %s" % (item, latex(str(velocity)))
     output["question"] = "Calculate the instantanious acceleration of %s at time t = %s" % (item, accelerationTime)
