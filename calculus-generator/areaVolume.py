@@ -67,4 +67,4 @@ def latex(func):
 
 if __name__ == "__main__":
     import pprint
-    pprint.pprint(generate(1,3))
+    pprint.pprint(generate(3,6))
