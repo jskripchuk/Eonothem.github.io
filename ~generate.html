@@ -1,0 +1,321 @@
+<!DOCTYPE HTML>
+<html>
+
+<style>
+    /*body {
+      margin: 0;
+      overflow: hidden;
+      width: 100%;
+      height: 100vh;
+      background: #2196F3;
+      background: linear-gradient(to top left, #4CB8C4 -40%, #2196F3);
+    }*/
+
+    .container {
+      position: absolute;
+      top:0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 250px;
+      height: 250px;
+      margin: auto;
+
+      background-color: white;
+    }
+
+    .part {
+      width: 250px;
+      position: absolute;
+    }
+
+    .svgpath {
+      fill: #FFFFFF;
+      stroke: rgba(130,99,152,0.95);/*#18FFFF;*/
+      stroke-width: 1.5px;
+      stroke-dasharray: 1000;
+      stroke-linecap: round;
+      z-index: 2;
+    }
+
+    .svgbg {
+      fill: rgba(255,255,255,0.2);
+      z-index: 1;
+     }
+
+    #playload {
+      animation: dash 2.5s reverse ease-in-out infinite;
+    }
+
+    @keyframes dash {
+      to {
+        stroke-dashoffset: 2000;
+      }
+    }
+</style>
+
+<div id="loading">
+    <div class='container'>
+      <svg class='part' x="0px" y="0px" viewBox="0 0 256 256" style="enable-background:new 0 0 256 256;" xml:space="preserve">
+        <path class="svgpath" id="playload" d="M189.5,140.5c-6.6,29.1-32.6,50.9-63.7,50.9c-36.1,0-65.3-29.3-65.3-65.3
+        c0,0,17,0,23.5,0c10.4,0,6.6-45.9,11-46c5.2-0.1,3.6,94.8,7.4,94.8c4.1,0,4.1-92.9,8.2-92.9c4.1,0,4.1,83,8.1,83
+        c4.1,0,4.1-73.6,8.1-73.6c4.1,0,4.1,63.9,8.1,63.9c4.1,0,4.1-53.9,8.1-53.9c4.1,0,4.1,44.1,8.2,44.1c4.1,0,3.1-34.5,7.2-34.5
+        c4.1,0,3.1,24.6,7.2,24.6c4.1,0,2.5-14.5,5.2-14.5c2.2,0,0.8,5.1,4.2,4.9c0.4,0,13.1,0,13.1,0c0-34.4-27.9-62.3-62.3-62.3
+        c-27.4,0-50.7,17.7-59,42.3" />
+
+        <path class="svgbg" d="M61,126c0,0,16.4,0,23,0c10.4,0,6.6-45.9,11-46c5.2-0.1,3.6,94.8,7.4,94.8c4.1,0,4.1-92.9,8.2-92.9
+        c4.1,0,4.1,83,8.1,83c4.1,0,4.1-73.6,8.1-73.6c4.1,0,4.1,63.9,8.1,63.9c4.1,0,4.1-53.9,8.1-53.9c4.1,0,4.1,44.1,8.2,44.1
+        c4.1,0,3.1-34.5,7.2-34.5c4.1,0,3.1,24.6,7.2,24.6c4.1,0,2.5-14.5,5.2-14.5c2.2,0,0.8,5.1,4.2,4.9c0.4,0,22.5,0,23,0" />
+      </svg>
+    </div>
+</div>
+
+<head>
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="https://www.desmos.com/api/v0.3/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
+    <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Open Sans', sans-serif;
+            
+            color: black;
+			background-color: #B5B5B5;
+			font-weight: 600;
+        }
+        
+        #questionContainer {
+            background-color: rgb(109, 83, 128);
+            width: 100vw;
+            height: 100vh;
+            float: left;
+        }
+        
+        ol {
+        }
+		
+		li{
+			padding-top: 0px;
+		}
+        
+        #holder {
+            padding-top: 5px;
+            background-color: #FFDD54;
+            padding-bottom: 10px;
+        }
+        
+        #calculator {
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 1px 1px 10px #1a1a1a;
+            width: 400px;
+            height: 300px;
+        }
+        
+        #questions {
+            padding-top: 20px;
+        }
+		
+		.questionHolder{
+			width: 95%;
+			padding-top: 20px;
+			background-color: rgb(109,83,128);
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: 10px;
+			height: 800px;
+			border-radius: 5px;
+			box-shadow: 1px 1px 10px #1a1a1a;
+		}
+		
+		.questionBackground{
+			background-color: #FFDD54;
+			margin-top: 20px;
+			margin-left: auto;
+			margin-right: auto;
+			width: 95%;
+			height: 20vh;
+			border-radius: 5px;
+			box-shadow: 1px 1px 10px #1a1a1a;
+		}
+		
+		#question{
+			padding-top: 10px;
+		}
+		
+		.input{
+			padding: 10px;
+			display: inline-block;
+			/*Green:#70E08C
+				Red: #DE4040
+			*/
+			background-color: #FFE478;
+			border-radius: 4px;
+			width: 95%;
+		}
+		
+		.inputText{
+			height: 20px;
+			width: 300px;
+			border: solid 1px;
+			padding-left: 5px;
+		}
+		
+		.solution{
+			display: inline-block;
+		}
+		
+		#equationOutput{
+			padding-left: 10px;
+		}
+		
+		#submitButton{
+			margin-right:auto;
+			margin-left:auto;
+			width: 400px;
+			text-align: center;
+			background-color: #FFDD54;
+			box-shadow: 1px 1px 10px #1a1a1a;
+			border-radius: 10px;
+			font-size: 120%;
+			transition: box-shadow 0.4s, letter-spacing 0.4s, background-color 0.4s, transform 0.4s;
+		}
+		
+		#submitButton:hover{
+			box-shadow: 5px 5px 10px #1a1a1a;
+			background-color: #FFE478;
+			transform: scale(1.05,1.05);
+		}
+		
+		#correctAnswer{
+			float: right;
+			padding-top: 2px;
+		}
+		
+    </style>
+</head>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config( { 
+		extensions: ["[Contrib]/forminput/forminput.js"], 
+		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+		messageStyle: "none"		
+	});
+
+
+</script>
+<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Ajax.config.path["Contrib"] = "//cdn.mathjax.org/mathjax/contrib";
+</script>
+
+
+
+<body>
+	<div class = "questionHolder">
+		<div id = "calculator"></div>
+		
+		<div class = "questionBackground">
+			<ol id = "question">
+				<li id = "introQuestion"></li>
+				
+				<ol type="a">
+					<li>Calculate f(x)'</li>
+						<div class = "input">
+							<input type="text" placeholder='Type your answer here!' class = "inputText solution" id = "inputText"></input>
+							<div class = "solution" id = "equationOutput"></div>
+							<div class = "solution" id = "correctAnswer"></div>
+						</div>
+				</ol>
+				
+			</ol>
+		</div>
+		
+		<div id = "submitButton">
+			<h1>Submit</h1>
+		</div>
+	</div>
+    
+
+    <div id="navbar">
+    </div>
+
+    <script>
+		var problemObject = 0;
+	
+		$(document).ready(function() {
+            $('#loading').remove();
+            $.ajax({
+                type: "get",
+                url: "http://calculus-generator.appspot.com/?type=differentiation&degree=2"
+            }).done(function(data) {
+				problemObject = data;
+                calculator.setExpression({
+                    id: 'graph1',
+                    latex: data.problem,
+                    color: 'red'
+                });
+                calculator.setExpression({
+                    id: 'derv',
+                    latex: data.solution,
+                    color: 'blue'
+                });
+                $("#introQuestion").html("The function $f(x) =" + data.problem + "$ and its derivitive $f(x)'$ are shown above.");
+            });
+        });
+		
+        var elt = document.getElementById('calculator');
+        var calculator = Desmos.Calculator(elt, {
+            expressions: false,
+            lockViewport: true,
+            solutions: false
+        });
+		
+        calculator.setViewport([-5, 5, -5, 5]);
+
+		//Reads the input text and reloads the math
+        $("#inputText").on('input', function() {			
+            var strInput = $("#inputText").val();
+			
+			//Remove all dollar signs because that's bad
+			var eqText = strInput.replace(/\$/g, "");
+			
+            if (eqText != "") {
+                $("#equationOutput").text("$" + eqText + "$");
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub, "equationOutput"]);
+            } else {
+                $("#equationOutput").text("");
+            }
+			rotateit = true;
+        });
+				
+		$("#submitButton").click(function(){
+			//console.log(problemObject);
+			$("#inputText").prop('disabled', true);
+			
+			$.ajax({
+                    type: "post",
+                    url: "php/verify.php"
+            }).done(function(data) {
+                   
+            });
+
+			var answerOne = $("#inputText").val();
+			var solution = problemObject.solution;
+			//Remove those annoying spaces
+			answerOne = answerOne.replace(/ /g,"");
+			solution = solution.replace(/ /g,"");
+		
+			if(answerOne == solution){
+				$(".input").css("background-color","#70E08C");
+				$("#correctAnswer").text("Correct!");
+			}else{
+				$(".input").css("background-color","#DE4040");
+				$("#correctAnswer").text("The answer is $" +solution+"$");
+			}
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub, "resultText"]);
+		});
+    </script>
+</body>
+</html>
