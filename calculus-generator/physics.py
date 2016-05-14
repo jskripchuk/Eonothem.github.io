@@ -22,8 +22,8 @@ def generate():
     payload = []
     item = random.choice(["Mr. Satalino's mustache", "Mr. Stover's beard", "Mr. Kramer's anime addiction", "the downfall of the bourgeoisie"])
     output = dict()
-    output["header"] = "The velocity of %s over time is given by the function %s" % (item, latex(str(velocity)))
-    output["question"] = "Calculate the instantanious acceleration of %s at time t = %s" % (item, accelerationTime)
+    output["header"] = "The velocity of %s over time is given by the function $%s$" % (item, latex(str(velocity)))
+    output["question"] = "Calculate the instantanious acceleration of %s at time $t = %s$" % (item, accelerationTime)
     output["solution"] = float(N(diff(velocity,t).subs(t,accelerationTime), precision))
     payload.append(output)
 
@@ -32,7 +32,7 @@ def generate():
     #print(position)
 
     output = dict()
-    output["question"] = "At the time t = %s, the position of %s is equal to %s. Find the equation for postion." % (positionTime,item,N(position.subs(t,positionTime),precision))
+    output["question"] = "At the time $t = %s$, the position of %s is equal to %s. Find the equation for postion." % (positionTime,item,N(position.subs(t,positionTime),precision))
     output["solution"] = str(latex(position))
     payload.append(output)
 
@@ -40,7 +40,7 @@ def generate():
     averageVelocityEnd = averageVelocityStart+random.randint(4,20)
 
     output = dict()
-    output["question"] = "Find the average velocity of %s from %s &le; t &le; %s" % (item, averageVelocityStart, averageVelocityEnd)
+    output["question"] = "Find the average velocity of %s from $%s &le; t &le; %s$" % (item, averageVelocityStart, averageVelocityEnd)
     output["solution"] = float(N( (1.0/(averageVelocityEnd-averageVelocityStart))*integrate(velocity,(t,averageVelocityStart,averageVelocityEnd)), precision ))
 
     payload.append(output)
