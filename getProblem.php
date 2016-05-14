@@ -1,3 +1,0 @@
-<?php
-	echo "DANK MEMES";
-?>

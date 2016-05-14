@@ -131,17 +131,18 @@
 
     <div class="header">
         <ul class="list nav">
-            <li><a href="/"><span class="title">Small Stone</a></li>
-
-            <a href="/login">
-                <li><span class="element selected" id="login">Login</span></li>
-            </a>
             <a href="/generate">
                 <li><span class="element" id="generate">Generate</span></li>
             </a>
+            <li><a href="/"><span class="title">Small Stone</a></li>
             <a href="/about">
                 <li><span class="element" id="about">About</span></li>
             </a>
+            <a href="/login">
+                <li><span class="element selected" id="login">Login</span></li>
+            </a>
+            
+            
 
 
         </ul>
@@ -150,8 +151,8 @@
     <div id="loginBox">
         <div id="loginEnter" class="logItem">
             <p id="loginText" class="logHead"><em>Login</em></p>
-            <input type="text" placeholder="Username"><br>
-            <input type="password" placeholder="Password">
+            <input type="text" placeholder="Username" id = "loginUsername"><br>
+            <input type="password" placeholder="Password" id = "loginPassword">
             <div id="submitLogin" class="submitButton">
                 <h3>Submit</h3></div>
         </div>
@@ -179,7 +180,7 @@
                 } else {
                     $.ajax({
                         type: "post",
-                        url: "loginScript.php",
+                        url: "php/signup.php",
 						data:{
 							username: username,
 							password: password
@@ -191,6 +192,24 @@
             } else {
                 console.log("Passwords do not match!");
             }
+        });
+		
+		$("#submitLogin").click(function() {
+            var username = $("#loginUsername").val();
+            var password = $("#loginPassword").val();
+			
+			if(username != "" && password != ""){
+				$.ajax({
+                        type: "post",
+                        url: "php/verify.php",
+						data:{
+							username: username,
+							password: password
+						}
+                    }).done(function(data) {
+						console.log(data);
+                    });
+			}
         });
     </script>
 </body>

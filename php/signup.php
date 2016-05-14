@@ -2,9 +2,10 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
+$databasename = "smallstone";
 
 try {
-    $conn = new PDO("mysql:host=$servername;dbname=smallstone", $username, $password);
+    $conn = new PDO("mysql:host=$servername;dbname=$databasename", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	
 	if(isset($_POST["username"]) && isset($_POST["password"])){

@@ -1,0 +1,252 @@
+<!DOCTYPE HTML>
+<html>
+
+
+
+<head>
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Open Sans', sans-serif;
+            color: black;
+            background-color: #B5B5B5;
+            font-weight: 600;
+        }
+        
+        #questionContainer {
+            width: 95%;
+            padding-top: 20px;
+            background-color: rgb(109, 83, 128);
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 10px;
+            height: 90vh;
+            border-radius: 5px;
+            box-shadow: 1px 1px 10px #1a1a1a;
+        }
+        
+        .questionBackground {
+            padding: 10px;
+            background-color: #FFDD54;
+            margin-top: 20px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 95%;
+            border-radius: 5px;
+            box-shadow: 1px 1px 10px #1a1a1a;
+        }
+        
+        .answerDiv {
+            /*Green:#70E08C
+                Red: #DE4040
+            */
+            background-color: #FFE478;
+            padding: 10px;
+            margin: 0;
+            width: 95%;
+            border-radius: 5px;
+        }
+        
+        .answerForm {
+            width: 30%;
+            padding: 5px;
+        }
+        
+        .solution {
+            float: right;
+            margin-top: 0px;
+            padding-top: 4px;
+        }
+        
+        #submitButton {
+            margin-right: auto;
+            margin-left: auto;
+            width: 400px;
+            text-align: center;
+            background-color: #FFDD54;
+            box-shadow: 1px 1px 10px #1a1a1a;
+            border-radius: 10px;
+            font-size: 120%;
+            transition: box-shadow 0.4s, letter-spacing 0.4s, background-color 0.4s, transform 0.4s;
+        }
+        
+        #submitButton:hover {
+            box-shadow: 5px 5px 10px #1a1a1a;
+            background-color: #FFE478;
+            transform: scale(1.05, 1.05);
+        }
+    </style>
+    <style>
+        .list {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #FFDD54;
+            font-weight: 600;
+            font-size: 105%;
+            color: #212121;
+        }
+        
+        .element {
+            display: block;
+            float: right;
+            padding: 15px 50px;
+            text-align: center;
+            transition: background-color 0.15s;
+        }
+        
+        .title {
+            display: block;
+            float: left;
+            text-align: center;
+            letter-spacing: 2.5px;
+            font-weight: 700;
+            padding: 8px 20px;
+            font-style: italic;
+            font-size: 140%;
+        }
+        
+        #generate {
+            color: grey;
+        }
+        
+        .nav a {
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        .element:hover {
+            background-color: #FFF1B8;
+        }
+    </style>
+
+</head>
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config( { 
+        extensions: ["[Contrib]/forminput/forminput.js"], 
+        tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+        messageStyle: "none"        
+    });
+
+
+</script>
+<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Ajax.config.path["Contrib"] = "//cdn.mathjax.org/mathjax/contrib";
+</script>
+
+<body>
+
+    <div class="header">
+        <ul class="list nav">
+            <li><a href="/"><span class="title">Small Stone</a></li>
+
+
+
+
+            <a href='/generate'>
+                <li><span class='element' id='generate'>Generate</span></li>
+            </a>
+
+
+
+            <a href="/about">
+                <li><span class="element" id="about">About</span></li>
+            </a>
+
+            <script>
+                $.ajax({
+                    type: "post",
+                    url: "php/verify.php"
+                }).done(function(data) {
+                    if (data == 1) {
+                        $("ul").append("<a href='/profile'><li><span class='element' id = 'profile'>Profile</span></li></a>");
+                    } else {
+                        $("ul").append("<a href='/login'><li><span class = 'element' id = 'login'>Login</span></li></a>");
+                    }
+                });
+            </script>
+        </ul>
+    </div>
+
+    <div id="questionContainer">
+        <div class="questionBackground">
+            <p id="header"></p>
+            <ol>
+
+                <script>
+                    $(document).ready(function() {
+                        var problemParams = ["physics", "volume&min=2&max=5"];
+                        var problemTypes = ["Physics", "Area and Volume"];
+
+                        var randSelect = Math.floor(Math.random() * 2);
+                        var probLink = problemParams[randSelect];
+                        var probType = problemTypes[randSelect];
+                        $.ajax({
+                            type: "get",
+                            url: "http://calculus-generator.appspot.com/?type=" + probLink
+                        }).done(function(data) {
+                            //console.log(data);
+                            $('#loading').remove();
+                            $("#sendHelp").remove();
+                            $("#header").text(data[0].header);
+                            for (i = 0; i < data.length; i++) {
+                                $("ol").append("<li id = 'question" + i + "'>" + data[i].question + "</li>");
+                                $("#question" + i + "").append(
+                                    "<div class = 'answerDiv' id = 'answerDiv" + i + "'><input class = 'answerForm' placeholder='Type your answer here!' type = 'text' id = 'answer" + i + "'></div>"
+                                );
+                            }
+
+
+                            $("#submitButton").click(function() {
+                                var totalCorrect = 0;
+                                for (i = 0; i < data.length; i++) {
+                                    //console.log("AA")
+
+                                    var answerVal = $("#answer" + i).val();
+                                    if (answerVal == data[i].solution) {
+                                        totalCorrect = totalCorrect + 1;
+                                        $("#answerDiv" + i).css("background-color", "#70E08C");
+                                        $("#answerDiv" + i).append("<p class = 'solution'>Correct!</p>")
+
+                                    } else {
+                                        $("#answerDiv" + i).css("background-color", "#DE4040");
+                                        $("#answerDiv" + i).append("<p class = 'solution'>The answer is: " + data[i].solution + "</p>")
+                                    }
+
+
+                                    //console.log($("#answer"+i).val());
+                                }
+
+                                $.ajax({
+                                    type: "post",
+                                    url: "php/score.php",
+                                    data: {
+                                        totalCorrect: totalCorrect,
+                                        totalPoints: data.length,
+                                        topic: "Your mom!"
+                                    }
+                                }).done(function(data) {
+                                    console.log(data);
+                                });
+                            });
+                        });
+
+                    });
+                </script>
+
+            </ol>
+        </div>
+        <div id='submitButton'>
+            <h1>Submit</h1></div>
+    </div>
+</body>
+
+</html>

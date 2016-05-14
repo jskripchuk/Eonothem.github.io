@@ -293,6 +293,13 @@
 		$("#submitButton").click(function(){
 			//console.log(problemObject);
 			$("#inputText").prop('disabled', true);
+			
+			$.ajax({
+                    type: "post",
+                    url: "php/verify.php"
+            }).done(function(data) {
+                   
+            });
 
 			var answerOne = $("#inputText").val();
 			var solution = problemObject.solution;
