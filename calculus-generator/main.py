@@ -4,7 +4,7 @@ import json
 
 #import graph
 
-import arithmetic, sample_template, differentiation, physics, areaVolume
+import arithmetic, sample_template, differentiation, physics, areaVolume, relatedRates
 
 JINJA_ENVIRONMENT = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
@@ -35,10 +35,12 @@ class MainHandler(webapp2.RequestHandler):
             elif pType in physics.appliesTo:
                 payload = physics.generate()
 
-            elif pType == "volume":
+            elif pType in areaVolume.appliesTo:
                 maximum = int(self.request.get("max", default_value="3"))
                 minimum = int(self.request.get("min", default_value="1"))
                 payload = areaVolume.generate(minimum, maximum)
+            elif pType in relatedRates.appliesTo:
+                payload = relatedRates.generate()
             self.response.write(json.dumps(payload, indent=4, sort_keys=True))
 
         #Is there some error? Throw up the home page.
