@@ -36,23 +36,23 @@ def generate(lower, upper):
     payload = []
 
     output = dict()
-    output["header"] = "The functions "+latex(functionOne)+" and "+latex(functionTwo)+" are defined in the first quadrant."
+    output["header"] = "The functions $"+latex(functionOne)+"$ and $"+latex(functionTwo)+"$ are defined in the first quadrant."
     output["question"] = "Find the area between the two functions."
     output["solution"] = float(area)
     payload.append(output)
 
     output = dict()
-    output["question"] = "Find the volume of the solid of revolution of the two functions when rotated about the x-axis."
+    output["question"] = "Find the volume of the solid of revolution of the two functions when rotated about the $x$-axis."
     output["solution"] = float(volumeX)
     payload.append(output)
 
     output = dict()
-    output["question"] = "Find the volume of the solid of revolution between the two functions when it is rotated about the line x = "+str(verticalAxis)
+    output["question"] = "Find the volume of the solid of revolution between the two functions when it is rotated about the line $x = "+str(verticalAxis) + "$"
     output["solution"] = float(volumeShell)
     payload.append(output)
 
     output = dict()
-    output["question"] = "Find the volume between the two functions when the cross-section perpendicular to the x-axis is a square."
+    output["question"] = "Find the volume between the two functions when the cross-section perpendicular to the $x$-axis is a square."
     output["solution"] = float(volumeSquareBase)
     payload.append(output)
 

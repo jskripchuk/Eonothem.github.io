@@ -31,7 +31,7 @@ def generate():
     #print(position)
 
     output = dict()
-    output["question"] = "At the time $t = %s$, the position of %s is equal to %s. Find the equation for postion." % (positionTime,item,N(position.subs(t,positionTime),precision))
+    output["question"] = "At the time $t = %s$, the position of %s is equal to $%s$. Find the equation for postion." % (positionTime,item,N(position.subs(t,positionTime),precision))
     output["solution"] = str(latex(position))
     payload.append(output)
 
