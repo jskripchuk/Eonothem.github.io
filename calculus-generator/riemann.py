@@ -28,3 +28,5 @@ def rightRiemann(eq, a, b, subint):
 def exact(eq, a, b):
     return N(integrate(eq, (x, a, b)))
 
+def generate():
+    
