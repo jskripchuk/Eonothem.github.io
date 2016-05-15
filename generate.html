@@ -284,7 +284,7 @@
                         var randSelect = Math.floor(Math.random() * problemParams.length);
                         var probLink = problemParams[randSelect];
                         var probType = problemTypes[randSelect];
-                        //probLink = problemParams[4];
+                        probLink = problemParams[4];
                         $.ajax({
                             type: "get",
                             url: "http://calculus-generator.appspot.com/?type=" + probLink
@@ -311,7 +311,17 @@
                                     //console.log("AA")
 
                                     var answerVal = $("#answer" + i).val();
-                                    if (Math.abs(answerVal - data[i].solution) <= 0.3) {
+                                    if(data[i].optional){
+                                        if(data[i].solution.toLowerCase().indexOf("overestimate") > -1 && answerVal.toLowerCase().indexOf("overestimate") > -1 
+                                            || data[i].solution.toLowerCase().indexOf("underestimate") > -1 && answerVal.toLowerCase().indexOf("underestimate") > -1) {
+                                            totalCorrect = totalCorrect + 1;
+                                            $("#answerDiv" + i).css("background-color", "#70E08C");
+                                            $("#answerDiv" + i).append("<p class = 'solution'>Correct!</p>")
+                                        }else{
+                                           $("#answerDiv" + i).css("background-color", "#DE4040");
+                                        $("#answerDiv" + i).append("<p class = 'solution'>The answer is: " + data[i].solution + "</p>") 
+                                        }
+                                    }else if (Math.abs(answerVal - data[i].solution) <= 0.3) {
                                         totalCorrect = totalCorrect + 1;
                                         $("#answerDiv" + i).css("background-color", "#70E08C");
                                         $("#answerDiv" + i).append("<p class = 'solution'>Correct!</p>")
