@@ -290,7 +290,6 @@
                             url: "http://calculus-generator.appspot.com/?type=" + probLink
                         }).done(function(data) {
                             //console.log(data);
-                            $('#loading').remove();
                             $("#sendHelp").remove();
                             $("#header").html(data[0].header);
                             for (i = 0; i < data.length; i++) {
