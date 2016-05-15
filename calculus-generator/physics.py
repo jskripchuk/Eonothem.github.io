@@ -1,7 +1,6 @@
 appliesTo = ("physics",)
 
-from sympy import *
-import differentiation
+from sympy import symbols, N, diff, integrate, cos
 
 import random
 t = symbols('t')

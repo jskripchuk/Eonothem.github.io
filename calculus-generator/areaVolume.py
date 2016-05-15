@@ -1,6 +1,5 @@
 appliesTo = ("volume",)
-from sympy import *
-import differentiation
+from sympy import symbols, solve, N, integrate, pi
 
 import random
 
