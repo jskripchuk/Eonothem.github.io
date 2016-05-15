@@ -1,6 +1,7 @@
 appliesTo = ("riemann",)
 from sympy import N, symbols, integrate
 from random import randint
+from numpy import linspace
 x = symbols("x")
 
 def latex(func):
@@ -10,28 +11,32 @@ def latex(func):
     return func
 
 def eval(eq, num):
-    return int(N(eq.subs(x, num)))
+    ans = float(N(eq.subs(x, num * 1.0)))
+    #print ans
+    return ans
 
 def leftRiemann(eq, a, b, subint):
-    dx = 1.0 * (b-a)/subint
-    area = 0
-    for i in range(a, b):
-        area += (eval(eq, i) * dx)
-    return float(area)
+    dx = 1.0 * (b - a)/subint
+    intervals = linspace(a, b, num=subint, endpoint=False)
+    area = 0.0
+    for x in intervals:
+        area += (eval(eq, x) * dx)
+    return area
+
 
 def rightRiemann(eq, a, b, subint):
-    dx = 1.0 * (b-a)/subint
-    area = 0
-    for i in range(a + 1, b + 1):
-        area += (eval(eq, i) * dx)
-    return float(area)
+    dx = 1.0 * (b - a)/subint
+    intervals = linspace(a + dx, b, num=subint)
+    area = 0.0
+    for x in intervals:
+        area += (eval(eq, x) * dx)
+    return area
 
 def exact(eq, a, b):
     return float(N(integrate(eq, (x, a, b))))
 
-print leftRiemann(x**2, 0, 5, 5)
-print rightRiemann(x**2, 0, 5, 5)
-
+print leftRiemann(x**2, 4, 8, 7)
+print rightRiemann(x**2, 4, 8, 7)
 
 def generate():
     eq = ((randint(2, 7)) * x**(randint(1, 4)) + (randint(0, 10)))
@@ -65,7 +70,7 @@ def generate():
     payload.append(output)
 
     output = dict()
-    output["question"] = "Calculate the exact area of $f(x)$ between ${0} &le; x &le; {1}$ with {2} subintervals.".format(a, b, subint)
+    output["question"] = "Calculate the exact area of $f(x)$ between ${0} &le; x &le; {1}$".format(a, b)
     output["solution"] = exact(eq, a, b)
     payload.append(output)
 

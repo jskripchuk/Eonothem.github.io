@@ -27,7 +27,7 @@ Mr. Satalino is an astute young pot dealer with a conceptual and procedural/anal
     payload.append(output)
 
     output = dict()
-    output["question"] = "He also found that his clients have been willing to pay $0.5e^{0.07t}+3$ dollars where $2 &le; t &le 25$;. Find the day he earned the most money."
+    output["question"] = "He also found that his clients have been willing to pay $0.5e^{0.07t}+3$ dollars where $2 &le; t &le; 25$. Find the day he earned the most money."
     output["solution"] = 25
     payload.append(output)
 
