@@ -11,53 +11,54 @@
       background: #2196F3;
       background: linear-gradient(to top left, #4CB8C4 -40%, #2196F3);
     }*/
-
+    
     .container {
-      position: absolute;
-      top:0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      width: 250px;
-      height: 250px;
-      margin: auto;
-      z-index: 999;
-      background-color: white;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 250px;
+        height: 250px;
+        margin: auto;
+        z-index: 999;
+        background-color: white;
     }
-
+    
     .part {
-      width: 250px;
-      position: absolute;
+        width: 250px;
+        position: absolute;
     }
-
+    
     .svgpath {
-      fill: #FFFFFF;
-      stroke: rgba(130,99,152,0.95);/*#18FFFF;*/
-      stroke-width: 1.5px;
-      stroke-dasharray: 1000;
-      stroke-linecap: round;
-      z-index: 1000;
+        fill: #FFFFFF;
+        stroke: rgba(130, 99, 152, 0.95);
+        /*#18FFFF;*/
+        stroke-width: 1.5px;
+        stroke-dasharray: 1000;
+        stroke-linecap: round;
+        z-index: 1000;
     }
-
+    
     .svgbg {
-      fill: rgba(255,255,255,0.2);
-      z-index: 999;
-     }
-
-    #playload {
-      animation: dash 2.5s reverse ease-in-out infinite;
+        fill: rgba(255, 255, 255, 0.2);
+        z-index: 999;
     }
-
+    
+    #playload {
+        animation: dash 2.5s reverse ease-in-out infinite;
+    }
+    
     @keyframes dash {
-      to {
-        stroke-dashoffset: 2000;
-      }
+        to {
+            stroke-dashoffset: 2000;
+        }
     }
 </style>
 
 <div id="loading">
     <div class='container'>
-      <svg class='part' x="0px" y="0px" viewBox="0 0 256 256" style="enable-background:new 0 0 256 256;" xml:space="preserve">
+        <svg class='part' x="0px" y="0px" viewBox="0 0 256 256" style="enable-background:new 0 0 256 256;" xml:space="preserve">
         <path class="svgpath" id="playload" d="M189.5,140.5c-6.6,29.1-32.6,50.9-63.7,50.9c-36.1,0-65.3-29.3-65.3-65.3
         c0,0,17,0,23.5,0c10.4,0,6.6-45.9,11-46c5.2-0.1,3.6,94.8,7.4,94.8c4.1,0,4.1-92.9,8.2-92.9c4.1,0,4.1,83,8.1,83
         c4.1,0,4.1-73.6,8.1-73.6c4.1,0,4.1,63.9,8.1,63.9c4.1,0,4.1-53.9,8.1-53.9c4.1,0,4.1,44.1,8.2,44.1c4.1,0,3.1-34.5,7.2-34.5
@@ -85,8 +86,8 @@
             background-color: #B5B5B5;
             font-weight: 600;
         }
-
-        #whiteBackground{
+        
+        #whiteBackground {
             width: 100%;
             height: 100%;
             position: absolute;
@@ -156,8 +157,8 @@
             background-color: #FFE478;
             transform: scale(1.05, 1.05);
         }
-
-        table{
+        
+        table {
             margin-top: 10px;
             margin-bottom: 10px;
             margin-right: auto;
@@ -165,16 +166,20 @@
             border-collapse: collapse;
             background-color: #ffe066;
         }
-        td{
+        
+        td {
             border: 2px solid #1F1F1F;
             width: 30px;
             padding: 5px;
         }
-
-        .questionClass{
+        
+        .questionClass {
             padding: 10px;
         }
-        tr:nth-child(even) {background-color: #FFE88C}
+        
+        tr:nth-child(even) {
+            background-color: #FFE88C
+        }
     </style>
 
     <style>
@@ -220,8 +225,8 @@
         .element:hover {
             background-color: #FFF1B8;
         }
-
-        #header{
+        
+        #header {
             line-height: 40px;
             text-align: center;
         }
@@ -231,11 +236,7 @@
 
 
 <script type="text/x-mathjax-config">
-    MathJax.Hub.Config( { 
-        extensions: ["[Contrib]/forminput/forminput.js"], 
-        tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
-        messageStyle: "none"        
-    });
+    MathJax.Hub.Config( { extensions: ["[Contrib]/forminput/forminput.js"], tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}, messageStyle: "none" });
 
 
 </script>
@@ -245,7 +246,7 @@
 </script>
 
 <body>
-    <div id = "whiteBackground"></div>
+    <div id="whiteBackground"></div>
 
     <div class="header">
         <ul class="list nav">
@@ -287,8 +288,8 @@
                 <script>
                     var submitted = false;
                     $(document).ready(function() {
-                        var problemParams = ["physics", "volume&min=2&max=5","relatedRates","optimization","riemann"];
-                        var problemTypes = ["Physics", "Area and Volume", "Related Rates","Optimization","Riemann Sums"];
+                        var problemParams = ["physics", "volume&min=2&max=5", "relatedRates", "optimization", "riemann"];
+                        var problemTypes = ["Physics", "Area and Volume", "Related Rates", "Optimization", "Riemann Sums"];
 
                         var randSelect = Math.floor(Math.random() * problemParams.length);
                         var probLink = problemParams[randSelect];
@@ -299,69 +300,71 @@
                             url: "http://calculus-generator.appspot.com/?type=" + probLink
                         }).done(function(data) {
                             //console.log(data);
-                           // $("#sendHelp").remove();
+                            // $("#sendHelp").remove();
                             $("#header").html(data[0].header);
                             for (i = 0; i < data.length; i++) {
                                 $("ol").append("<li class = 'questionClass' id = 'question" + i + "'>" + data[i].question + "</li>");
                                 $("#question" + i + "").append(
                                     "<div class = 'answerDiv' id = 'answerDiv" + i + "'><input class = 'answerForm' placeholder='Type your answer here!' type = 'text' id = 'answer" + i + "'></div>"
                                 );
-                                MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
-                                setTimeout(function(){
-        $("#whiteBackground").fadeOut(1000);
-                                $("#loading").fadeOut("fast");
-    }, 500);
-                                
+                                MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+                                setTimeout(function() {
+                                    $("#whiteBackground").fadeOut(1000);
+                                    $("#loading").fadeOut("fast");
+                                }, 500);
+
                             }
 
 
                             $("#submitButton").click(function() {
-                               // if(!submitted){
-                                if(!submitted){
+                                // if(!submitted){
+                                if (!submitted) {
                                     submitted = true;
-                                
-                                var totalCorrect = 0;
-                                for (i = 0; i < data.length; i++) {
-                                    //console.log("AA")
+                                    $("#submitButton").html("<h1>Next Problem</h1>");
+                                    var totalCorrect = 0;
+                                    for (i = 0; i < data.length; i++) {
+                                        //console.log("AA")
 
-                                    var answerVal = $("#answer" + i).val();
-                                    if(data[i].optional){
-                                        if(data[i].solution.toLowerCase().indexOf("overestimate") > -1 && answerVal.toLowerCase().indexOf("overestimate") > -1 
-                                            || data[i].solution.toLowerCase().indexOf("underestimate") > -1 && answerVal.toLowerCase().indexOf("underestimate") > -1) {
+                                        var answerVal = $("#answer" + i).val();
+                                        if (data[i].optional) {
+                                            if (data[i].solution.toLowerCase().indexOf("overestimate") > -1 && answerVal.toLowerCase().indexOf("overestimate") > -1 ||
+                                                data[i].solution.toLowerCase().indexOf("underestimate") > -1 && answerVal.toLowerCase().indexOf("underestimate") > -1) {
+                                                totalCorrect = totalCorrect + 1;
+                                                $("#answerDiv" + i).css("background-color", "#70E08C");
+                                                $("#answerDiv" + i).append("<p class = 'solution'>Correct!</p>")
+                                            } else {
+                                                $("#answerDiv" + i).css("background-color", "#DE4040");
+                                                $("#answerDiv" + i).append("<p class = 'solution'>The answer is: " + data[i].solution + "</p>")
+                                            }
+                                        } else if (Math.abs(answerVal - data[i].solution) <= 0.3) {
                                             totalCorrect = totalCorrect + 1;
                                             $("#answerDiv" + i).css("background-color", "#70E08C");
                                             $("#answerDiv" + i).append("<p class = 'solution'>Correct!</p>")
-                                        }else{
-                                           $("#answerDiv" + i).css("background-color", "#DE4040");
-                                        $("#answerDiv" + i).append("<p class = 'solution'>The answer is: " + data[i].solution + "</p>") 
+
+                                        } else {
+                                            $("#answerDiv" + i).css("background-color", "#DE4040");
+                                            $("#answerDiv" + i).append("<p class = 'solution'>The answer is: " + data[i].solution + "</p>")
                                         }
-                                    }else if (Math.abs(answerVal - data[i].solution) <= 0.3) {
-                                        totalCorrect = totalCorrect + 1;
-                                        $("#answerDiv" + i).css("background-color", "#70E08C");
-                                        $("#answerDiv" + i).append("<p class = 'solution'>Correct!</p>")
 
-                                    } else {
-                                        $("#answerDiv" + i).css("background-color", "#DE4040");
-                                        $("#answerDiv" + i).append("<p class = 'solution'>The answer is: " + data[i].solution + "</p>")
+                                        
+
+                                        //console.log($("#answer"+i).val());
                                     }
-
-                                    MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
-
-                                    //console.log($("#answer"+i).val());
+                                    MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+                                    $.ajax({
+                                        type: "post",
+                                        url: "php/score.php",
+                                        data: {
+                                            totalCorrect: totalCorrect,
+                                            totalPoints: data.length,
+                                            topic: "Your mom!"
+                                        }
+                                    }).done(function(data) {
+                                        console.log(data);
+                                    });
+                                }else{
+                                    location.reload();
                                 }
-
-                                $.ajax({
-                                    type: "post",
-                                    url: "php/score.php",
-                                    data: {
-                                        totalCorrect: totalCorrect,
-                                        totalPoints: data.length,
-                                        topic: "Your mom!"
-                                    }
-                                }).done(function(data) {
-                                    console.log(data);
-                                });
-                            }
                             });
                         });
                         //$('#loading').remove();
