@@ -79,7 +79,22 @@
             background-color: #FFE478;
             transform: scale(1.05, 1.05);
         }
+
+        table{
+            margin-top: 10px;
+            margin-bottom: 10px;
+            margin-right: auto;
+            margin-left: auto;
+            border-collapse: collapse;
+            background-color: #ffe066;
+        }
+        td{
+            border: 2px solid #1F1F1F;
+            width: 30px;
+            padding: 5px;
+        }
     </style>
+
     <style>
         .list {
             list-style-type: none;
@@ -183,12 +198,13 @@
 
                 <script>
                     $(document).ready(function() {
-                        var problemParams = ["physics", "volume&min=2&max=5"];
-                        var problemTypes = ["Physics", "Area and Volume"];
+                        var problemParams = ["physics", "volume&min=2&max=5","relatedRates"];
+                        var problemTypes = ["Physics", "Area and Volume", "Related Rates"];
 
-                        var randSelect = Math.floor(Math.random() * 2);
+                        var randSelect = Math.floor(Math.random() * problemParams.length);
                         var probLink = problemParams[randSelect];
                         var probType = problemTypes[randSelect];
+                        //probLink = problemParams[2];
                         $.ajax({
                             type: "get",
                             url: "http://calculus-generator.appspot.com/?type=" + probLink
@@ -202,6 +218,7 @@
                                 $("#question" + i + "").append(
                                     "<div class = 'answerDiv' id = 'answerDiv" + i + "'><input class = 'answerForm' placeholder='Type your answer here!' type = 'text' id = 'answer" + i + "'></div>"
                                 );
+                                MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
                             }
 
 
