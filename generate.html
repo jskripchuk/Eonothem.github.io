@@ -21,7 +21,7 @@
       width: 250px;
       height: 250px;
       margin: auto;
-
+      z-index: 999;
       background-color: white;
     }
 
@@ -36,12 +36,12 @@
       stroke-width: 1.5px;
       stroke-dasharray: 1000;
       stroke-linecap: round;
-      z-index: 2;
+      z-index: 1000;
     }
 
     .svgbg {
       fill: rgba(255,255,255,0.2);
-      z-index: 1;
+      z-index: 999;
      }
 
     #playload {
@@ -84,6 +84,14 @@
             color: black;
             background-color: #B5B5B5;
             font-weight: 600;
+        }
+
+        #whiteBackground{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background-color: white;
+            z-index: 2;
         }
         
         #questionContainer {
@@ -237,6 +245,7 @@
 </script>
 
 <body>
+    <div id = "whiteBackground"></div>
 
     <div class="header">
         <ul class="list nav">
@@ -284,13 +293,13 @@
                         var randSelect = Math.floor(Math.random() * problemParams.length);
                         var probLink = problemParams[randSelect];
                         var probType = problemTypes[randSelect];
-                        probLink = problemParams[4];
+                        //probLink = problemParams[4];
                         $.ajax({
                             type: "get",
                             url: "http://calculus-generator.appspot.com/?type=" + probLink
                         }).done(function(data) {
                             //console.log(data);
-                            $("#sendHelp").remove();
+                           // $("#sendHelp").remove();
                             $("#header").html(data[0].header);
                             for (i = 0; i < data.length; i++) {
                                 $("ol").append("<li class = 'questionClass' id = 'question" + i + "'>" + data[i].question + "</li>");
@@ -298,6 +307,11 @@
                                     "<div class = 'answerDiv' id = 'answerDiv" + i + "'><input class = 'answerForm' placeholder='Type your answer here!' type = 'text' id = 'answer" + i + "'></div>"
                                 );
                                 MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+                                setTimeout(function(){
+        $("#whiteBackground").fadeOut(1000);
+                                $("#loading").fadeOut("fast");
+    }, 500);
+                                
                             }
 
 
@@ -350,7 +364,7 @@
                             }
                             });
                         });
-                        $('#loading').remove();
+                        //$('#loading').remove();
 
                     });
                 </script>
