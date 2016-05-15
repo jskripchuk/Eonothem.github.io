@@ -4,7 +4,7 @@ import json
 
 #import graph
 
-import arithmetic, sample_template, differentiation, physics, areaVolume, relatedRates, riemann
+import arithmetic, sample_template, differentiation, physics, areaVolume, relatedRates, riemann, optimization
 
 JINJA_ENVIRONMENT = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
@@ -43,6 +43,8 @@ class MainHandler(webapp2.RequestHandler):
                 payload = relatedRates.generate()
             elif pType in riemann.appliesTo:
                 payload = riemann.generate()
+            elif pType in optimization.appliesTo:
+                payload = optimization.generate()
             self.response.write(json.dumps(payload, indent=4, sort_keys=True))
 
         #Is there some error? Throw up the home page.
