@@ -211,7 +211,7 @@
                                     //console.log("AA")
 
                                     var answerVal = $("#answer" + i).val();
-                                    if (answerVal == data[i].solution) {
+                                    if (abs(answerVal - data[i].solution) <= 0.3) {
                                         totalCorrect = totalCorrect + 1;
                                         $("#answerDiv" + i).css("background-color", "#70E08C");
                                         $("#answerDiv" + i).append("<p class = 'solution'>Correct!</p>")
