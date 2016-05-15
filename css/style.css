@@ -124,9 +124,9 @@ h2 {
 }
 
 #footer {
-  margin-left: 15px;
+  margin-right: 10px;
+  width: 100%;
   position: fixed;
-  bottom: 0;
   color: white;
 }
 

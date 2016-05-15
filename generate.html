@@ -47,7 +47,7 @@
             background-color: #FFE478;
             padding: 10px;
             margin: 0;
-            width: 95%;
+            width: 98%;
             border-radius: 5px;
         }
         
@@ -92,6 +92,10 @@
             border: 2px solid #1F1F1F;
             width: 30px;
             padding: 5px;
+        }
+
+        .questionClass{
+            padding: 10px;
         }
         tr:nth-child(even) {background-color: #FFE88C}
     </style>
@@ -138,6 +142,11 @@
         
         .element:hover {
             background-color: #FFF1B8;
+        }
+
+        #header{
+            line-height: 40px;
+            text-align: center;
         }
     </style>
 
@@ -198,14 +207,15 @@
             <ol>
 
                 <script>
+                    var submitted = false;
                     $(document).ready(function() {
-                        var problemParams = ["physics", "volume&min=2&max=5","relatedRates"];
-                        var problemTypes = ["Physics", "Area and Volume", "Related Rates"];
+                        var problemParams = ["physics", "volume&min=2&max=5","relatedRates","optimization","riemann"];
+                        var problemTypes = ["Physics", "Area and Volume", "Related Rates","Optimization","Riemann Sums"];
 
                         var randSelect = Math.floor(Math.random() * problemParams.length);
                         var probLink = problemParams[randSelect];
                         var probType = problemTypes[randSelect];
-                        //probLink = problemParams[2];
+                        //probLink = problemParams[4];
                         $.ajax({
                             type: "get",
                             url: "http://calculus-generator.appspot.com/?type=" + probLink
@@ -213,9 +223,9 @@
                             //console.log(data);
                             $('#loading').remove();
                             $("#sendHelp").remove();
-                            $("#header").text(data[0].header);
+                            $("#header").html(data[0].header);
                             for (i = 0; i < data.length; i++) {
-                                $("ol").append("<li id = 'question" + i + "'>" + data[i].question + "</li>");
+                                $("ol").append("<li class = 'questionClass' id = 'question" + i + "'>" + data[i].question + "</li>");
                                 $("#question" + i + "").append(
                                     "<div class = 'answerDiv' id = 'answerDiv" + i + "'><input class = 'answerForm' placeholder='Type your answer here!' type = 'text' id = 'answer" + i + "'></div>"
                                 );
@@ -224,6 +234,10 @@
 
 
                             $("#submitButton").click(function() {
+                               // if(!submitted){
+                                if(!submitted){
+                                    submitted = true;
+                                
                                 var totalCorrect = 0;
                                 for (i = 0; i < data.length; i++) {
                                     //console.log("AA")
@@ -239,6 +253,7 @@
                                         $("#answerDiv" + i).append("<p class = 'solution'>The answer is: " + data[i].solution + "</p>")
                                     }
 
+                                    MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
 
                                     //console.log($("#answer"+i).val());
                                 }
@@ -254,6 +269,7 @@
                                 }).done(function(data) {
                                     console.log(data);
                                 });
+                            }
                             });
                         });
 
