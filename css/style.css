@@ -126,6 +126,7 @@ h2 {
 #footer {
   margin-right: 10px;
   position: fixed;
+  bottom: 0;
   color: white;
 }
 
